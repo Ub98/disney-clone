@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Response } from '../models/movie';
+import { ResponseMovie } from '../models/movie';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -9,10 +10,24 @@ import { Response } from '../models/movie';
 export class MovieService {
   constructor(private http: HttpClient) {}
 
-  url =
-    'https://api.themoviedb.org/3/movie/popular?api_key=38ad7c04338432c40248d6af71ca0ca8&language=it&page=1';
+  options = {
+    headers: new HttpHeaders({
+      accept: 'application/json',
+      Authorization: `${environment.API_TOKEN}`,
+    }),
+  };
 
-  getMovieData(): Observable<Response> {
-    return this.http.get<Response>(this.url);
+  getMovieData(): Observable<ResponseMovie> {
+    return this.http.get<ResponseMovie>(
+      `${environment.BASE_URL}/discover/movie?include_adult=false&include_video=true&language=it&page=1&sort_by=popularity.desc`,
+      this.options
+    );
+  }
+
+  getMovieBySearch(query: string, page: number): Observable<ResponseMovie> {
+    return this.http.get<ResponseMovie>(
+      `${environment.BASE_URL}/search/movie?query=${query}&include_adult=false&language=it&page=${page}`,
+      this.options
+    );
   }
 }

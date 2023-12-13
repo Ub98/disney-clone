@@ -1,12 +1,20 @@
 <form>
-    <input
-      type="text"
-      placeholder="Titolo, personaggio o genere"
-      name="search"
-      autocomplete="off"
-    />
-    <!-- <button></button> -->
-  </form>
-  
+  <input
+    type="text"
+    placeholder="Titolo, personaggio o genere"
+    name="search"
+    autocomplete="off"
+    [(ngModel)]="inputSearch"
+    (ngModelChange)="getSearchMovie(inputSearch)"
+  />
+  <!-- <button></button> -->
+</form>
 
-  
+<div class="container">
+  <div class="card" *ngFor="let movie of movies">
+    <img
+      [src]="'https://image.tmdb.org/t/p/original' + movie.backdrop_path"
+      alt="{{ movie.title }} Poster"
+    />
+  </div>
+</div>

@@ -4,8 +4,17 @@
     <div ngxSlickItem class="slide" *ngFor="let movie of movies">
       <img
         [src]="'https://image.tmdb.org/t/p/original' + movie.backdrop_path"
-        alt=""
+        alt="{{movie.title}}"
       />
     </div>
   </ngx-slick-carousel>
+  <!-- <h2>Titolo prova</h2>
+  <ngx-slick-carousel [config]="slideConfig">
+    <div ngxSlickItem class="slide" *ngFor="let movie of movies.results">
+      <img
+        [src]="'https://image.tmdb.org/t/p/original' + movie.poster_path"
+        alt=""
+      />
+    </div>
+  </ngx-slick-carousel> -->
 </div>

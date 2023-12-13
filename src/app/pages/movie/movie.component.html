@@ -1,13 +1,14 @@
 <div class="body">
     <div class="head">
         <h1>Film</h1>
-        <select name="" id="">
+        <select name="genre" id="genre" (change)="change($event)">
             <option value="">In primo piano</option>
+            <option *ngFor="let genre of genres" value="{{genre.id}}">{{genre.name}}</option>
         </select>
     </div>
-    <!-- <div class="container">
-        <div class="card" *ngFor="let movie of movieData?.movies">
-          <img [src]="movie.backdrop_path" alt="{{ movie.title }} Poster">
+    <div class="container">
+        <div class="card" *ngFor="let movie of movies">
+          <img [src]="'https://image.tmdb.org/t/p/original' + movie.backdrop_path" alt="{{ movie.title }} Poster">
         </div>
-      </div> -->
+      </div>
 </div>
