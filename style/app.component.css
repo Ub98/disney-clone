@@ -1,0 +1,5 @@
+div.body {
+  background: url(../assets/images/home-background.png) no-repeat center center;
+  background-size: cover;
+  min-height: 150vh;
+}

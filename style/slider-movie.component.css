@@ -1,0 +1,68 @@
+.wrap ::ng-deep {
+  margin-top: 40px;
+}
+.wrap ::ng-deep h2 {
+  padding-left: calc(3.5vw + 24px);
+  font-family: "Avenir Next W10 Demi";
+  z-index: 1;
+}
+.wrap ::ng-deep .slick-slider {
+  display: flex;
+}
+.wrap ::ng-deep .slick-slider .slick-prev {
+  height: 100%;
+  width: calc(3.5vw + 24px);
+  margin: 0;
+  left: 0;
+  top: 43%;
+  z-index: 1;
+  opacity: 0;
+}
+.wrap ::ng-deep .slick-slider .slick-prev:hover {
+  opacity: 1;
+}
+.wrap ::ng-deep .slick-slider .slick-prev::before {
+  font-family: "ArrowIcon";
+  font-size: 2rem;
+  color: white;
+  content: "\e803";
+}
+.wrap ::ng-deep .slick-slider .slick-next {
+  height: 88%;
+  width: calc(3.5vw + 24px);
+  margin: 0;
+  right: 0;
+  top: 43%;
+  z-index: 1;
+  opacity: 0;
+}
+.wrap ::ng-deep .slick-slider .slick-next:hover {
+  opacity: 1;
+}
+.wrap ::ng-deep .slick-slider .slick-next::before {
+  font-family: "ArrowIcon";
+  color: white;
+  content: "\e802";
+  font-size: 2rem;
+}
+.wrap ::ng-deep .slick-slider .slick-list {
+  width: 100%;
+  margin: 0;
+}
+.wrap ::ng-deep .slick-slider .slick-list .slick-slide {
+  padding: 10px;
+  cursor: pointer;
+}
+.wrap ::ng-deep .slick-slider .slick-list .slick-slide img {
+  width: 100%;
+  transition: transform 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.69) 0px 26px 30px -10px, rgba(0, 0, 0, 0.73) 0px 16px 10px -10px;
+}
+.wrap ::ng-deep .slick-slider .slick-list .slick-slide img:hover {
+  margin: -3px;
+  transform: scale(1.06);
+  border: 3px solid white;
+  border-radius: 6px;
+  z-index: 2;
+}

@@ -1,0 +1,7 @@
+<div class="wrap">
+  <ngx-slick-carousel [config]="slideConfig">
+    <div ngxSlickItem class="slide" *ngFor="let movie of movies">
+      <img [src]="'https://image.tmdb.org/t/p/original' + movie.backdrop_path" alt="" width="100%" />
+    </div>
+  </ngx-slick-carousel>
+</div>

@@ -1,0 +1,86 @@
+.wrap ::ng-deep {
+  padding-top: 100px;
+  .slick-slider {
+    margin: 0;
+    display: flex;
+    .slick-prev {
+      height: 100%;
+      width: calc(3.5vw + 24px);
+      margin: 0;
+      left: 0;
+      top: 43%;
+      z-index: 1;
+      opacity: 0;
+      &:hover {
+        opacity: 1;
+      }
+      &::before {
+        font-family: "ArrowIcon";
+        font-size: 2rem;
+        color: white;
+        content: "\E803";
+      }
+    }
+    .slick-next {
+      height: 100%;
+      width: calc(3.5vw + 24px);
+      margin: 0;
+      right: 0;
+      top: 43%;
+      z-index: 1;
+      opacity: 0;
+      &:hover {
+        opacity: 1;
+      }
+      &::before {
+        font-family: "ArrowIcon";
+        color: white;
+        content: "\E802";
+        font-size: 2rem;
+      }
+    }
+    .slick-list {
+      width: 100%;
+      padding-top: 50px;
+      .slick-slide {
+        margin: 0 10px;
+        box-shadow: rgba(0, 0, 0, 0.69) 0px 26px 30px -10px,
+          rgba(0, 0, 0, 0.73) 0px 16px 10px -10px;
+        border: 3px solid transparent;
+        border-radius: 6px;
+        transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+        &:hover {
+          border: 3px solid white;
+          border-radius: 6px;
+        }
+        img {
+          border-radius: 6px;
+          object-fit: cover;
+          aspect-ratio: 16/9;
+          height: 368px;
+          width: 100%;
+        }
+      }
+    }
+    .slick-dots {
+      bottom: 45px;
+      right: calc(3.5vw + 44px);
+      z-index: 1;
+      display: flex;
+      justify-content: end;
+      li {
+        margin: 0;
+        &.slick-active button::before {
+          opacity: 1;
+          color: #f9f9f9;
+        }
+        button {
+          &::before {
+            color: grey;
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
