@@ -1,5 +1,6 @@
 form {
   padding-top: 72px;
+  position: relative;
 }
 form input {
   z-index: 1000;
@@ -34,6 +35,7 @@ form input:focus, form input:focus::placeholder {
   cursor: pointer;
 }
 .container .card:hover {
+  margin: -3px;
   transform: scale(1.1);
   border-radius: 8px;
   border: 3px solid white;

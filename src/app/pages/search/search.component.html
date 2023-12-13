@@ -5,10 +5,10 @@
     name="search"
     autocomplete="off"
     [(ngModel)]="inputSearch"
-    (ngModelChange)="getSearchMovie(inputSearch)"
+    (ngModelChange)="search(inputSearch)"
   />
-  <!-- <button></button> -->
 </form>
+
 
 <div class="container">
   <div class="card" *ngFor="let movie of movies">

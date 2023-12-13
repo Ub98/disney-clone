@@ -14,20 +14,27 @@ export class SearchComponent implements OnInit {
 
   constructor(private ms: MovieService) {}
   ngOnInit(): void {
-    this.getSearchMovie(this.inputSearch)
+    this.ms.getMovieData().subscribe((data) => {this.movies = data.results});
   }
 
-  getSearchMovie(inputSearch: string) {
-    this.ms.getMovieBySearch(inputSearch, this.page).subscribe((movie) => {
-      this.movies = movie.results;
+  search(inputSearch: string) {
+    this.inputSearch = inputSearch;
+    this.page = 1;
+    this.movies = [];
+    this.getSearchMovie();
+  }
+
+  getSearchMovie() {
+    this.ms.getMovieBySearch(this.inputSearch, this.page).subscribe((movie) => {
+      this.movies = [...this.movies, ...movie.results];
     });
   }
 
   @HostListener('window:scroll', ['$event'])
-  onScroll(event: any): void {
+  onScroll(): void {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
       this.page++;
-     
+      this.getSearchMovie();
     }
   }
 }

@@ -38,7 +38,7 @@ export class MovieComponent implements OnInit {
   }
 
   @HostListener('window:scroll', ['$event'])
-  onScroll(event: any): void {
+  onScroll(): void {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
       this.page++;
       this.getMovie()
