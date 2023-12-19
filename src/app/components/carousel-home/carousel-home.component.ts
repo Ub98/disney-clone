@@ -8,12 +8,6 @@ import { Movie } from '../../models/movie';
   styleUrl: './carousel-home.component.scss'
 })
 export class CarouselHomeComponent implements OnInit{
-  // slides = [
-  //   { img: '../../assets/images/slider-badag.jpg' },
-  //   { img: '../../assets/images/slider-badging.jpg' },
-  //   { img: '../../assets/images/slider-scale.jpg' },
-  //   { img: '../../assets/images/slider-scales.jpg' },
-  // ];
   slideConfig = {
     infinite: true,
     slidesToShow: 1,
@@ -29,6 +23,6 @@ export class CarouselHomeComponent implements OnInit{
   constructor(private ms: MovieService) {}
 
   ngOnInit(): void {
-    this.ms.getMovieData().subscribe((movie) => {this.movies = movie.results});
+    this.ms.getTrendingDay().subscribe((movie) => {this.movies = movie.results});
   }
 }

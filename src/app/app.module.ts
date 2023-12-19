@@ -17,10 +17,16 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-
-
-
-
+import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { CollectionsComponent } from './components/collections/collections.component';
+import { SeriesDetailsComponent } from './components/series-details/series-details.component';
+import { VideoComponent } from './components/video/video.component';
+import {MatButtonModule} from '@angular/material/button';
+import { LoaderComponent } from './components/loader/loader.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { FooterComponent } from './components/footer/footer.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -34,7 +40,13 @@ import { FormsModule } from '@angular/forms';
     BtnCategoryHomeComponent,
     CarouselHomeComponent,
     NavbarComponent,
-    SliderMovieComponent
+    SliderMovieComponent,
+    MovieDetailsComponent,
+    CollectionsComponent,
+    SeriesDetailsComponent,
+    VideoComponent,
+    LoaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +54,11 @@ import { FormsModule } from '@angular/forms';
     SlickCarouselModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatTabsModule,
+    MatButtonModule,
+    MatProgressSpinnerModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

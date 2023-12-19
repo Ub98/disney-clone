@@ -3,6 +3,7 @@ import { GenreService } from '../../services/genre.service';
 import { Genre } from '../../models/genres';
 import { Movie } from '../../models/movie';
 import { MovieService } from '../../services/movie.service';
+import { LoaderService } from '../../services/loader.service';
 
 @Component({
   selector: 'app-movie',
@@ -15,7 +16,8 @@ export class MovieComponent implements OnInit {
   page: number = 1;
   genreValue?: any;
 
-  constructor(private gs: GenreService, private ms: MovieService) {}
+  constructor(private gs: GenreService, private ms: MovieService, private loader: LoaderService) {}
+
   ngOnInit(): void {
     this.gs.getGenreMovie().subscribe((genre) => {
       this.genres = genre.genres;

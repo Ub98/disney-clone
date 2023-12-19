@@ -61,7 +61,7 @@
 }
 .wrap ::ng-deep .slick-slider .slick-list .slick-slide img:hover {
   margin: -3px;
-  transform: scale(1.06);
+  transform: scale(1.05);
   border: 3px solid white;
   border-radius: 6px;
   z-index: 2;

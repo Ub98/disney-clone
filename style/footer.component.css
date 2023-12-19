@@ -1,0 +1,48 @@
+footer {
+  z-index: 1000;
+  position: relative;
+  min-height: 100px;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+}
+footer .contain-img {
+  display: flex;
+  justify-content: center;
+  width: 79px;
+  height: 48px;
+}
+footer .contain-img img {
+  width: 100%;
+}
+footer ul {
+  padding: 20px;
+  font-family: "ArrowIcon";
+  font-size: 1em;
+  color: white;
+  display: flex;
+}
+footer ul li {
+  list-style: none;
+  padding: 0 10px;
+  cursor: pointer;
+  transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+}
+footer ul li:hover {
+  transform: scale(1.2);
+}
+footer ul li:nth-child(1) a::before {
+  content: "\f09b";
+  font-size: 2.5em;
+}
+footer ul li:nth-child(2) a::before {
+  content: "\f319";
+  font-size: 2.5em;
+}
+footer ul li a {
+  text-decoration: none;
+  color: white;
+}

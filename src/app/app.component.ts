@@ -1,5 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,8 +9,8 @@ import { Component, HostListener } from '@angular/core';
 export class AppComponent {
   title = 'disney-clone';
   isScrolled: boolean = false;
-
-  @HostListener('window:scroll') //per mettersi in ascolto delle evento scroll di window
+  
+  @HostListener('window:scroll')
   onScroll() {
     this.isScrolled = window.scrollY > 0;
   }

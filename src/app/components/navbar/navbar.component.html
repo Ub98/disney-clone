@@ -1,55 +1,65 @@
 <nav [ngClass]="{ scrolled: isScrolled }">
-    <ul>
-      <li>
-        <a routerLink="/home">
-          <div class="logo">
-            <img src="../../assets/images/logo.svg" alt="logo" /></div
-        ></a>
-      </li>
-      <li>
-        <a routerLink="/home"
-          ><span
-            ><img src="../../assets/images/home-icon.svg" alt="HOME"
-          /></span>
-          <p>HOME</p></a
-        >
-      </li>
-      <li>
-        <a routerLink="/search"
-          ><span
-            ><img src="../../assets/images/search-icon.svg" alt="cerca"
-          /></span>
-          <p>CERCA</p></a
-        >
-      </li>
-      <li>
-        <a routerLink="/my-list"
-          ><span
-            ><img src="../../assets/images/watchlist-icon.svg" alt="lista"
-          /></span>
-          <p>LA TUA LISTA</p></a
-        >
-      </li>
-      <li>
-        <a routerLink="/movie"
-          ><span
-            ><img src="../../assets/images/movie-icon.svg" alt="film"
-          /></span>
-          <p>FILM</p></a
-        >
-      </li>
-      <li>
-        <a routerLink="/series"
-          ><span
-            ><img src="../../assets/images/series-icon.svg" alt="serie"
-          /></span>
-          <p>SERIE</p></a
-        >
-      </li>
-    </ul>
-    <div class="contain-user">
-      <div class="user">
-        <img src="../../assets/images/io-p.png" alt="" />
-      </div>
-    </div>
-  </nav>
+  <ul>
+    <li>
+      <a routerLink="/home">
+        <div class="logo">
+          <img src="../../assets/images/logo.svg" alt="logo" /></div
+      ></a>
+    </li>
+    <li>
+      <a routerLink="/home"
+        ><span><img src="../../assets/images/home-icon.svg" alt="HOME" /></span>
+        <p>HOME</p></a
+      >
+    </li>
+    <li>
+      <a routerLink="/search"
+        ><span
+          ><img src="../../assets/images/search-icon.svg" alt="cerca"
+        /></span>
+        <p>CERCA</p></a
+      >
+    </li>
+    <li>
+      <a routerLink="/my-list"
+        ><span
+          ><img src="../../assets/images/watchlist-icon.svg" alt="lista"
+        /></span>
+        <p>LA TUA LISTA</p></a
+      >
+    </li>
+    <li>
+      <a routerLink="/movies"
+        ><span
+          ><img src="../../assets/images/movie-icon.svg" alt="film"
+        /></span>
+        <p>FILM</p></a
+      >
+    </li>
+    <li>
+      <a routerLink="/series"
+        ><span
+          ><img src="../../assets/images/series-icon.svg" alt="serie"
+        /></span>
+        <p>SERIE</p></a
+      >
+    </li>
+  </ul>
+  <div class="contain-user">
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      aria-label="Example icon-button with a menu"
+    >
+      <img src="../../assets/images/io-p.png" alt="" />
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <span>Account</span>
+      </button>
+      <button mat-menu-item>
+        <span>Esci</span>
+      </button>
+    </mat-menu>
+  </div>
+</nav>

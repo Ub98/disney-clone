@@ -7,14 +7,32 @@
     [(ngModel)]="inputSearch"
     (ngModelChange)="search(inputSearch)"
   />
+  <button type="reset">
+    <span class="material-symbols-outlined"> close </span>
+  </button>
 </form>
 
-
 <div class="container">
-  <div class="card" *ngFor="let movie of movies">
-    <img
-      [src]="'https://image.tmdb.org/t/p/original' + movie.backdrop_path"
-      alt="{{ movie.title }} Poster"
-    />
-  </div>
+ <ng-container *ngIf="!inputSearch">
+  <ng-container *ngFor="let movie of movies">
+    <div class="card" *ngIf="movie.backdrop_path">
+      <a [routerLink]="['/movie-details', movie.id]">
+        <img
+          [src]="'https://image.tmdb.org/t/p/original' + movie.backdrop_path"
+          alt="{{ movie.title }}"
+        />
+      </a>
+    </div>
+  </ng-container>
+ </ng-container>
+ <ng-container *ngIf="inputSearch">
+  <ng-container *ngFor="let search of searchData">
+    <div class="card" *ngIf="search.backdrop_path">
+      <a [routerLink]="search.media_type == 'tv' ? ['/series-details', search.id] : ['/movie-details', search.id]">
+        <img [src]="'https://image.tmdb.org/t/p/original' + search.backdrop_path" alt="{{ search.title }}" />
+      </a>
+      
+    </div>
+  </ng-container>
+ </ng-container>
 </div>

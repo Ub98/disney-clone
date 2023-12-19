@@ -1,6 +1,5 @@
 form {
   padding-top: 72px;
-  position: relative;
 }
 form input {
   z-index: 1000;
@@ -19,6 +18,23 @@ form input {
 form input:focus, form input:focus::placeholder {
   color: white;
   opacity: 1;
+}
+form input:focus + button {
+  opacity: 1;
+}
+form button {
+  z-index: 1001;
+  position: fixed;
+  top: auto;
+  right: calc(3.5vw + 24px);
+  border: none;
+  background-color: transparent;
+  opacity: 0;
+  height: 100px;
+}
+form button span {
+  color: white;
+  font-size: 44px;
 }
 
 .container {

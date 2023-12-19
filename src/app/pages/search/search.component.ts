@@ -1,6 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { MovieService } from '../../services/movie.service';
 import { Movie } from '../../models/movie';
+import { SearchService } from '../../services/search.service';
+import { Search } from '../../models/search';
 
 @Component({
   selector: 'app-search',
@@ -8,25 +10,42 @@ import { Movie } from '../../models/movie';
   styleUrl: './search.component.scss',
 })
 export class SearchComponent implements OnInit {
-  inputSearch!: string ;
+  inputSearch!: string;
   page: number = 1;
   movies: Movie[] = [];
+  searchData: Search[] = []
 
-  constructor(private ms: MovieService) {}
+  constructor(private ms: MovieService, private searchService: SearchService) {}
   ngOnInit(): void {
-    this.ms.getMovieData().subscribe((data) => {this.movies = data.results});
+    this.getMovieData()
+  }
+
+  getMovieData() {
+    this.ms.getMovieData(this.page).subscribe((data) => {
+      this.movies = [...this.movies, ...data.results];
+    });
   }
 
   search(inputSearch: string) {
     this.inputSearch = inputSearch;
     this.page = 1;
     this.movies = [];
-    this.getSearchMovie();
+    if (!this.inputSearch) {
+      this.getMovieData();
+    } else {
+      this.getSearch();
+    }
   }
 
-  getSearchMovie() {
-    this.ms.getMovieBySearch(this.inputSearch, this.page).subscribe((movie) => {
-      this.movies = [...this.movies, ...movie.results];
+  getSearch() {
+    this.searchService.getSearch(this.inputSearch, this.page).subscribe((movie) => {
+      this.searchData = movie.results;
+    });
+  }
+
+  pushSearch() {
+    this.searchService.getSearch(this.inputSearch, this.page).subscribe((movie) => {
+      this.searchData = [...this.searchData, ...movie.results];
     });
   }
 
@@ -34,7 +53,11 @@ export class SearchComponent implements OnInit {
   onScroll(): void {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
       this.page++;
-      this.getSearchMovie();
+      if (this.inputSearch) {
+        this.pushSearch();
+      } else {
+        this.getMovieData();
+      }
     }
   }
 }

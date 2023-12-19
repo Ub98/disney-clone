@@ -1,5 +1,8 @@
 div.body {
   background: url(../assets/images/home-background.png) no-repeat center center;
   background-size: cover;
-  min-height: 150vh;
+  min-height: 100vh;
+}
+div.body .wrap {
+  min-height: 100vh;
 }

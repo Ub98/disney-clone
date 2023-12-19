@@ -1,0 +1,96 @@
+<div class="wrap" *ngIf="movie">
+  <div class="contain-img" [ngStyle]="{ opacity: opacityValue }">
+    <img
+      [src]="'https://image.tmdb.org/t/p/original' + movie.backdrop_path"
+      alt=""
+    />
+    <div class="shadow"></div>
+  </div>
+  <div class="detail">
+    <article>
+      <h1>{{ movie.title }}</h1>
+      <div class="release">
+        <p>{{ movie.release_date }}</p>
+      </div>
+      <div class="genres">
+        <p *ngFor="let genre of movie.genres; let last = last">
+          {{ genre.name }}{{ !last ? "," : "" }}
+        </p>
+      </div>
+      <div class="contain-btn">
+        <button class="play-btn">
+          <span class="material-symbols-outlined"> play_arrow </span>Riproduci
+        </button>
+        <button
+          class="trailer-btn"
+          (click)="onClickTrailer()"
+        >
+          Trailer
+        </button>
+        <button class="add">
+          <span class="material-symbols-outlined"> add </span>
+        </button>
+      </div>
+      <div class="tagline">
+        <p>{{ movie.tagline }}</p>
+      </div>
+    </article>
+    <mat-tab-group
+      mat-stretch-tabs="false"
+      mat-align-tabs="start"
+      animationDuration="0ms"
+    >
+      <mat-tab label="CONSIGLIATI">
+        <ngx-slick-carousel [config]="slideConfig">
+          <ng-container *ngFor="let movie of similar">
+            <div ngxSlickItem class="slide" *ngIf="movie.backdrop_path">
+              <a [routerLink]="['/movie-details', movie.id]">
+                <img
+                  [src]="
+                    'https://image.tmdb.org/t/p/original' + movie.backdrop_path
+                  "
+                  alt="{{ movie.title }}"
+                />
+              </a>
+            </div>
+          </ng-container>
+        </ngx-slick-carousel>
+      </mat-tab>
+      <mat-tab label="EXTRA">
+        <div class="production">
+          <p>
+            Prodotto in:
+            <span *ngFor="let production of movie.production_countries">{{
+              production.name
+            }}</span>
+          </p>
+          <p>
+            Prodotto da:
+            <span *ngFor="let companies of movie.production_companies">{{
+              companies.name
+            }}</span>
+          </p>
+        </div>
+      </mat-tab>
+      <mat-tab label="DETTAGLI">
+        <div class="wrap-article">
+          <article>
+            <h2>{{ movie.title }}</h2>
+            <p>
+              {{ movie.overview }}
+            </p>
+          </article>
+          <article>
+            <p>
+              Data di uscita: <span>{{ movie.release_date }}</span>
+            </p>
+            <p>
+              Genere:
+              <span *ngFor="let genre of movie.genres">{{ genre.name }}</span>
+            </p>
+          </article>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

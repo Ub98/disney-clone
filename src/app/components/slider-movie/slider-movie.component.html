@@ -1,20 +1,128 @@
 <div class="wrap">
-  <h2>Titolo prova</h2>
+  <h2>Raccomandati per te</h2>
   <ngx-slick-carousel [config]="slideConfig">
-    <div ngxSlickItem class="slide" *ngFor="let movie of movies">
-      <img
-        [src]="'https://image.tmdb.org/t/p/original' + movie.backdrop_path"
-        alt="{{movie.title}}"
-      />
-    </div>
+    <ng-container *ngFor="let movie of movies">
+      <div ngxSlickItem class="slide" *ngIf="movie.backdrop_path">
+        <a [routerLink]="['/movie-details', movie.id]">
+          <img
+            [src]="'https://image.tmdb.org/t/p/original' + movie.backdrop_path"
+            alt="{{ movie.title }}"
+          />
+        </a>
+      </div>
+    </ng-container>
   </ngx-slick-carousel>
-  <!-- <h2>Titolo prova</h2>
+
+  <h2>In riproduzione</h2>
   <ngx-slick-carousel [config]="slideConfig">
-    <div ngxSlickItem class="slide" *ngFor="let movie of movies.results">
-      <img
-        [src]="'https://image.tmdb.org/t/p/original' + movie.poster_path"
-        alt=""
-      />
-    </div>
-  </ngx-slick-carousel> -->
+    <ng-container *ngFor="let movie of nowPlaying">
+      <div ngxSlickItem class="slide" *ngIf="movie.backdrop_path">
+        <a [routerLink]="['/movie-details', movie.id]">
+          <img
+            [src]="'https://image.tmdb.org/t/p/original' + movie.backdrop_path"
+            alt="{{ movie.title }}"
+          />
+        </a>
+      </div>
+    </ng-container>
+  </ngx-slick-carousel>
+
+  <h2>In Arrivo</h2>
+  <ngx-slick-carousel [config]="slideConfig">
+    <ng-container *ngFor="let movie of upComing">
+      <div ngxSlickItem class="slide" *ngIf="movie.backdrop_path">
+        <a [routerLink]="['/movie-details', movie.id]">
+          <img
+            [src]="'https://image.tmdb.org/t/p/original' + movie.poster_path"
+            alt="{{ movie.title }}"
+            style="transform: scale(1.02)"
+          />
+        </a>
+      </div>
+    </ng-container>
+  </ngx-slick-carousel>
+
+  <h2>Serie del momento</h2>
+  <ngx-slick-carousel [config]="slideConfig">
+    <ng-container *ngFor="let series of todaySeries">
+      <div ngxSlickItem class="slide" *ngIf="series.backdrop_path">
+        <a [routerLink]="['/series-details', series.id]">
+          <img
+            [src]="
+              'https://image.tmdb.org/t/p/original' + series.backdrop_path
+            "
+            alt="{{ series.name }}"
+          />
+        </a>
+      </div>
+    </ng-container>
+  </ngx-slick-carousel>
+
+  <h2>Campioni d'incassi</h2>
+  <ngx-slick-carousel [config]="slideConfig">
+    <ng-container *ngFor="let movie of topRated">
+      <div ngxSlickItem class="slide" *ngIf="movie.backdrop_path">
+        <a [routerLink]="['/movie-details', movie.id]">
+          <img
+            [src]="'https://image.tmdb.org/t/p/original' + movie.backdrop_path"
+            alt="{{ movie.title }}"
+          />
+        </a>
+      </div>
+    </ng-container>
+  </ngx-slick-carousel>
+
+  <ng-container *ngIf="isScrolled">
+    <h2>Film di avventura</h2>
+    <ngx-slick-carousel [config]="slideConfig">
+      <ng-container *ngFor="let movie of adventureMovie">
+        <div ngxSlickItem class="slide" *ngIf="movie.backdrop_path">
+          <a [routerLink]="['/movie-details', movie.id]">
+            <img
+              [src]="
+                'https://image.tmdb.org/t/p/original' + movie.backdrop_path
+              "
+              alt="{{ movie.title }}"
+            />
+          </a>
+        </div>
+      </ng-container>
+    </ngx-slick-carousel>
+  </ng-container>
+
+  <ng-container *ngIf="isScrolled">
+    <h2>Film di animazione</h2>
+    <ngx-slick-carousel [config]="slideConfig">
+      <ng-container *ngFor="let movie of animationMovie">
+        <div ngxSlickItem class="slide" *ngIf="movie.backdrop_path">
+          <a [routerLink]="['/movie-details', movie.id]">
+            <img
+              [src]="
+                'https://image.tmdb.org/t/p/original' + movie.backdrop_path
+              "
+              alt="{{ movie.title }}"
+            />
+          </a>
+        </div>
+      </ng-container>
+    </ngx-slick-carousel>
+  </ng-container>
+
+  <ng-container *ngIf="isScrolled">
+    <h2>Film thriller</h2>
+    <ngx-slick-carousel [config]="slideConfig">
+      <ng-container *ngFor="let movie of thrillerMovie">
+        <div ngxSlickItem class="slide" *ngIf="movie.backdrop_path">
+          <a [routerLink]="['/movie-details', movie.id]">
+            <img
+              [src]="
+                'https://image.tmdb.org/t/p/original' + movie.backdrop_path
+              "
+              alt="{{ movie.title }}"
+            />
+          </a>
+        </div>
+      </ng-container>
+    </ngx-slick-carousel>
+  </ng-container>
 </div>

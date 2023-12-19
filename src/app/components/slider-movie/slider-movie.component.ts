@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { MovieService } from '../../services/movie.service';
 import { Movie } from '../../models/movie';
+import { SeriesService } from '../../services/series.service';
+import { Series } from '../../models/series';
 
 @Component({
   selector: 'app-slider-movie',
@@ -8,11 +10,27 @@ import { Movie } from '../../models/movie';
   styleUrl: './slider-movie.component.scss',
 })
 export class SliderMovieComponent implements OnInit {
+
   movies: Movie[] = [];
-  constructor(private ms: MovieService) {}
+  nowPlaying: Movie[] = [];
+  topRated: Movie[] = [];
+  upComing: Movie[] = [];
+  adventureMovie: Movie[] = [];
+  animationMovie: Movie[] = [];
+  thrillerMovie: Movie[] = [];
+  todaySeries: Series[] = [];
+  isScrolled:boolean = false
+  
+  constructor(private ms: MovieService, private ss: SeriesService) {}
 
   ngOnInit(): void {
-    this.ms.getMovieData().subscribe((data) => {this.movies = data.results});
+    this.ms.getMovieData(1).subscribe((data) => {this.movies = data.results});
+    this.ms.getNowPlayingMovie(2).subscribe(movie=>{this.nowPlaying = movie.results})
+    this.ms.getTopRatedMovie(1).subscribe(movie=>{this.topRated = movie.results})
+    this.ms.getUpComingMovie(1).subscribe(movie=>{this.upComing = movie.results})
+    this.ss.getTodaySeries(Math.random() * 8 + 1).subscribe((serie) => {
+      this.todaySeries = serie.results;
+    });
   }
 
   slideConfig = {
@@ -49,4 +67,15 @@ export class SliderMovieComponent implements OnInit {
       },
     ],
   };
+
+  @HostListener('document:scroll', ['$event'])
+  onScroll(): void {
+    if (document.documentElement.clientHeight + window.scrollY >= document.documentElement.scrollHeight) {   
+      this.ms.getAdventureMovie(1).subscribe(movie=>{this.adventureMovie = movie.results})
+      this.ms.getAnimationMovie(1).subscribe(movie=>{this.animationMovie = movie.results})
+      this.ms.getThrillerMovie(1).subscribe(movie=>{this.thrillerMovie = movie.results})
+      this.isScrolled= true
+    }
+  }
+
 }
