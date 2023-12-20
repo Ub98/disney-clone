@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="content">
+    <h4>PASSAGGIO 1</h4>
+    <h3>Per continuare inserisci la tua email</h3>
+    <p>
+      Accedi al tuo account. Se non hai un account MyDisney, ti verrà chiesto di
+      crearne uno.
+    </p>
+    <form #emailForm="ngForm">
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          matInput
+          required
+          pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+        />
+        <!-- <mat-error *ngIf="emailInput.hasError('required')">
+          E-mail obbligatoria
+        </mat-error>
+        <mat-error *ngIf="emailInput.hasError('pattern')">
+          Questa email non è nel formato corretto. Riprova.</mat-error
+        > -->
+      </mat-form-field>
+      <button mat-raised-button color="primary">Continua</button>
+    </form>
+  </div>
+</div>

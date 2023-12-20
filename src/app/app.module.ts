@@ -18,15 +18,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
 import { CollectionsComponent } from './components/collections/collections.component';
 import { SeriesDetailsComponent } from './components/series-details/series-details.component';
 import { VideoComponent } from './components/video/video.component';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { LoaderComponent } from './components/loader/loader.component';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FooterComponent } from './components/footer/footer.component';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
+import { StartComponent } from './pages/start/start.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { EnterEmailComponent } from './components/enter-email/enter-email.component';
+import { EnterPasswordComponent } from './components/enter-password/enter-password.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -46,7 +54,12 @@ import {MatMenuModule} from '@angular/material/menu';
     SeriesDetailsComponent,
     VideoComponent,
     LoaderComponent,
-    FooterComponent
+    FooterComponent,
+    StartComponent,
+    LoginComponent,
+    RegisterComponent,
+    EnterEmailComponent,
+    EnterPasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,9 +71,13 @@ import {MatMenuModule} from '@angular/material/menu';
     MatTabsModule,
     MatButtonModule,
     MatProgressSpinnerModule,
-    MatMenuModule
+    MatMenuModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatIconModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -10,8 +10,14 @@ import { MovieDetailsComponent } from './components/movie-details/movie-details.
 import { CollectionsComponent } from './components/collections/collections.component';
 import { SeriesDetailsComponent } from './components/series-details/series-details.component';
 import { VideoComponent } from './components/video/video.component';
+import { StartComponent } from './pages/start/start.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { EnterEmailComponent } from './components/enter-email/enter-email.component';
+import { EnterPasswordComponent } from './components/enter-password/enter-password.component';
 
 const routes: Routes = [
+  { path: 'start', component: StartComponent },
   { path: 'home', component: HomeComponent },
   { path: 'search', component: SearchComponent },
   { path: 'my-list', component: MyListComponent },
@@ -26,10 +32,21 @@ const routes: Routes = [
     component: SeriesDetailsComponent,
   },
   {
-    path:'video/:key', component: VideoComponent
+    path: 'video/:key',
+    component: VideoComponent,
   },
+  {
+    path: 'login',
+    component: LoginComponent,
+    children: [
+      { path: '', redirectTo: 'enter-email', pathMatch: 'full' },
+      { path: 'enter-email', component: EnterEmailComponent },
+      { path: 'enter-password', component: EnterPasswordComponent },
+    ],
+  },
+  { path: 'register', component: RegisterComponent },
   { path: 'collections/:company', component: CollectionsComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'start', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
 ];
 

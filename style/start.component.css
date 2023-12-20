@@ -1,0 +1,26 @@
+.container {
+  background-image: url(../../../assets/images/login-background.jpg);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 calc(3.5vw + 24px);
+}
+.container h1 {
+  font-size: 3em;
+  text-align: center;
+}
+.container h3 {
+  font-size: 1.5em;
+  color: #cacaca;
+}
+.container .contain-btn {
+  display: flex;
+}
+.container .contain-btn button {
+  font-family: "Avenir Next W10 Demi", sans-serif;
+  margin: 1em 0.5em;
+  height: 50px;
+  font-size: 1.3em;
+}
