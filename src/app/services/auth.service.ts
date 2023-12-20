@@ -1,22 +1,43 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoggedUser, LoginDto, RegisterDto } from '../models/auth';
-import { Observable, tap } from 'rxjs';
+import { Observable, Subject, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
+  private emailSource = new Subject<string>();
+  private passwordSource = new Subject<string>();
+  private buttonClickSource = new Subject<void>();
+  email!: string;
+  password!: string;
+
+  email$ = this.emailSource.asObservable();
+  password$ = this.passwordSource.asObservable();
+  buttonClick$ = this.buttonClickSource.asObservable();
+
+  emitEmail(email: string) {
+    this.emailSource.next(email);
+    this.email = email;
+  }
+
+  emitPassword(password: string) {
+    this.passwordSource.next(password);
+    this.password = password;
+  }
+
+  emitButtonClick() {
+    this.buttonClickSource.next();
+  }
 
   constructor(private http: HttpClient) {}
 
   login(model: LoginDto): Observable<LoggedUser> {
     return this.http
       .post<LoggedUser>(`${environment.JSON_SERVER_BASE_URL}/login`, model)
-      .pipe(
-        tap((user) => this.setLoggedUser(user))
-      );
+      .pipe(tap((user) => this.setLoggedUser(user)));
   }
 
   register(model: RegisterDto): Observable<LoggedUser> {

@@ -15,25 +15,29 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { EnterEmailComponent } from './components/enter-email/enter-email.component';
 import { EnterPasswordComponent } from './components/enter-password/enter-password.component';
+import { authGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: 'start', component: StartComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'search', component: SearchComponent },
-  { path: 'my-list', component: MyListComponent },
-  { path: 'movies', component: MovieComponent },
-  { path: 'series', component: SeriesComponent },
+  { path: 'home', component: HomeComponent, canActivate: [authGuard] },
+  { path: 'search', component: SearchComponent, canActivate: [authGuard] },
+  { path: 'my-list', component: MyListComponent, canActivate: [authGuard] },
+  { path: 'movies', component: MovieComponent, canActivate: [authGuard] },
+  { path: 'series', component: SeriesComponent, canActivate: [authGuard] },
   {
     path: 'movie-details/:id',
     component: MovieDetailsComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'series-details/:id',
     component: SeriesDetailsComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'video/:key',
     component: VideoComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'login',
@@ -45,7 +49,11 @@ const routes: Routes = [
     ],
   },
   { path: 'register', component: RegisterComponent },
-  { path: 'collections/:company', component: CollectionsComponent },
+  {
+    path: 'collections/:company',
+    component: CollectionsComponent,
+    canActivate: [authGuard],
+  },
   { path: '', redirectTo: 'start', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
 ];

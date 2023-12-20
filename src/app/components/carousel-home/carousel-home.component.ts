@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../../services/movie.service';
 import { Movie } from '../../models/movie';
+import { Search } from '../../models/search';
 
 @Component({
   selector: 'app-carousel-home',
@@ -19,7 +20,7 @@ export class CarouselHomeComponent implements OnInit{
     centerPadding: 'calc(3.5vw + 24px) 40px',
   };
 
-  movies: Movie[] = [];
+  movies: Search[] = [];
   constructor(private ms: MovieService) {}
 
   ngOnInit(): void {

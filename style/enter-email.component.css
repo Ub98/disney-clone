@@ -4,6 +4,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+.container .logo {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1em;
+}
+.container .logo img {
+  width: 100%;
+}
+.container .logo p {
+  text-align: center;
 }
 .container .content {
   max-width: 580px;
@@ -19,14 +32,14 @@
 .container .content p {
   color: #7b7b7b;
 }
-.container .content form {
+.container .content .form {
   width: 100%;
   margin: 1em 0;
 }
-.container .content form .example-full-width {
+.container .content .form .example-full-width {
   width: 100%;
 }
-.container .content form button {
+.container .content .form button {
   font-family: "Avenir Next W10 Demi", sans-serif;
   width: 100%;
   height: 52px;
@@ -35,6 +48,6 @@
   background-color: #0058E1;
   transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.container .content form button:hover {
+.container .content .form button:hover {
   background-color: #0682F0;
 }

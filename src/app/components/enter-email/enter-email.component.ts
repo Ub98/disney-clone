@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-enter-email',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrl: './enter-email.component.scss'
 })
 export class EnterEmailComponent {
+  email!: string;
 
+  constructor(private authService: AuthService) {}
+
+  onEmailChange() {
+    this.authService.emitEmail(this.email);
+  }
 }

@@ -6,6 +6,18 @@
   align-items: center;
   flex-direction: column;
   padding: 0 calc(3.5vw + 24px);
+  .logo{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1em;
+    img{
+      width: 100%;
+    }
+    p{
+      text-align: center;
+    }
+  }
   h1 {
     font-size: 3em;
     text-align: center;

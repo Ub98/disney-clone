@@ -1,4 +1,4 @@
-<nav [ngClass]="{ scrolled: isScrolled }">
+<nav [ngClass]="{ scrolled: isScrolled }" *ngIf="authService.isUserLogged">
   <ul>
     <li>
       <a routerLink="/home">
@@ -46,6 +46,7 @@
     </li>
   </ul>
   <div class="contain-user">
+    <p>{{authService.getLoggedUser()!.user.name}} </p>
     <button
       mat-icon-button
       [matMenuTriggerFor]="menu"
@@ -57,7 +58,7 @@
       <button mat-menu-item>
         <span>Account</span>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item (click)="logOut()">
         <span>Esci</span>
       </button>
     </mat-menu>

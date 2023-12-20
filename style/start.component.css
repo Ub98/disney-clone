@@ -7,6 +7,18 @@
   flex-direction: column;
   padding: 0 calc(3.5vw + 24px);
 }
+.container .logo {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1em;
+}
+.container .logo img {
+  width: 100%;
+}
+.container .logo p {
+  text-align: center;
+}
 .container h1 {
   font-size: 3em;
   text-align: center;

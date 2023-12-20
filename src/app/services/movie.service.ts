@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ResponseMovie, ResponseMovieId } from '../models/movie';
 import { environment } from '../../environments/environment';
+import { ResponseSearch } from '../models/search';
 
 @Injectable({
   providedIn: 'root',
@@ -31,8 +32,8 @@ export class MovieService {
     );
   }
 
-  getTrendingDay(): Observable<ResponseMovie> {
-    return this.http.get<ResponseMovie>(
+  getTrendingDay(): Observable<ResponseSearch> {
+    return this.http.get<ResponseSearch>(
       `${environment.BASE_URL}/trending/all/day?language=it`,
       this.options
     );
