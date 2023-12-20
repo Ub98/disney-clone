@@ -26,18 +26,21 @@ export class SeriesDetailsComponent {
     private router: Router
   ) {}
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id) {
-      this.ss.getSeriesById(Number(id)).subscribe((data) => {
-        this.series = data;
-      });
-      this.ss.getSimilarById(Number(id)).subscribe((serie) => {
-        this.similar = serie.results;
-      });
-      this.vs.getVideoSeries(Number(id)).subscribe((video) => {
-        this.video = video.results;
-      });
-    }
+    this.route.paramMap.subscribe((params) => {
+      const id = params.get('id');
+      
+      if (id) {
+        this.ss.getSeriesById(Number(id)).subscribe((data) => {
+          this.series = data;
+        });
+        this.ss.getSimilarById(Number(id)).subscribe((serie) => {
+          this.similar = serie.results;
+        });
+        this.vs.getVideoSeries(Number(id)).subscribe((video) => {
+          this.video = video.results;
+        });
+      }
+    });
   }
 
   @HostListener('window:scroll', ['$event'])

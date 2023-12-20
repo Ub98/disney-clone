@@ -21,7 +21,13 @@
         <button class="play-btn">
           <span class="material-symbols-outlined"> play_arrow </span>Riproduci
         </button>
-        <button class="trailer-btn" (click)="onClickTrailer()">Trailer</button>
+        <button
+          class="trailer-btn"
+          (click)="onClickTrailer()"
+          *ngIf="video?.length"
+        >
+          Trailer
+        </button>
         <button class="add">
           <span class="material-symbols-outlined"> add </span>
         </button>
@@ -46,7 +52,7 @@
                 <div class="card-img">
                   <img
                     [src]="
-                      'https://image.tmdb.org/t/p/original' +
+                      'https://image.tmdb.org/t/p/w500' +
                       seasons.poster_path
                     "
                     [alt]="seasons.name"
@@ -76,7 +82,7 @@
               <a [routerLink]="['/series-details', series.id]">
                 <img
                   [src]="
-                    'https://image.tmdb.org/t/p/original' + series.backdrop_path
+                    'https://image.tmdb.org/t/p/w400' + series.backdrop_path
                   "
                   alt="{{ series.name }}"
                 />

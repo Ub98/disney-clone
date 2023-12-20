@@ -1,0 +1,15 @@
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    .material-symbols-outlined{
+        font-size: 7em;
+        color: #4b4e5a;
+        padding: .1em;
+    }
+    p{
+        color: #cacaca;
+    }
+}

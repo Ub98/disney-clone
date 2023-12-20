@@ -18,7 +18,7 @@
     <div class="card" *ngIf="movie.backdrop_path">
       <a [routerLink]="['/movie-details', movie.id]">
         <img
-          [src]="'https://image.tmdb.org/t/p/original' + movie.backdrop_path"
+          [src]="'https://image.tmdb.org/t/p/w400' + movie.backdrop_path"
           alt="{{ movie.title }}"
         />
       </a>
@@ -29,7 +29,7 @@
   <ng-container *ngFor="let search of searchData">
     <div class="card" *ngIf="search.backdrop_path">
       <a [routerLink]="search.media_type == 'tv' ? ['/series-details', search.id] : ['/movie-details', search.id]">
-        <img [src]="'https://image.tmdb.org/t/p/original' + search.backdrop_path" alt="{{ search.title }}" />
+        <img [src]="'https://image.tmdb.org/t/p/w400' + search.backdrop_path" alt="{{ search.title }}" />
       </a>
       
     </div>

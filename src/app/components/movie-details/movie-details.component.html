@@ -24,6 +24,7 @@
         <button
           class="trailer-btn"
           (click)="onClickTrailer()"
+          *ngIf="video?.length"
         >
           Trailer
         </button>
@@ -47,7 +48,7 @@
               <a [routerLink]="['/movie-details', movie.id]">
                 <img
                   [src]="
-                    'https://image.tmdb.org/t/p/original' + movie.backdrop_path
+                    'https://image.tmdb.org/t/p/w400' + movie.backdrop_path
                   "
                   alt="{{ movie.title }}"
                 />

@@ -13,7 +13,7 @@
       <div class="card" *ngIf="movie.backdrop_path">
         <a [routerLink]="['/series-details', movie.id]">
           <img
-            [src]="'https://image.tmdb.org/t/p/original' + movie.backdrop_path"
+            [src]="'https://image.tmdb.org/t/p/w400' + movie.backdrop_path"
             alt="{{ movie.title }}"
           />
         </a>

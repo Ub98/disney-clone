@@ -24,18 +24,21 @@ export class MovieDetailsComponent {
     private router: Router
   ) {}
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id) {
-      this.ms.getMovieById(Number(id)).subscribe((data) => {
-        this.movie = data;
-      });
-      this.ms.getSimilarById(Number(id)).subscribe((movie) => {
-        this.similar = movie.results;
-      });
-      this.vs.getVideoMovie(Number(id)).subscribe((video) => {
-        this.video = video.results;
-      });
-    }
+
+    this.route.paramMap.subscribe((params) => {
+      const id = params.get('id');
+      if (id) {
+        this.ms.getMovieById(Number(id)).subscribe((data) => {
+          this.movie = data;
+        });
+        this.ms.getSimilarById(Number(id)).subscribe((movie) => {
+          this.similar = movie.results;
+        });
+        this.vs.getVideoMovie(Number(id)).subscribe((video) => {
+          this.video = video.results;
+        });
+      }
+    });
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -85,10 +88,10 @@ export class MovieDetailsComponent {
     );
     if (trailer) {
       this.trailerKey = trailer.key;
-    }else{
-      this.trailerKey= this.video[0].key
+    } else {
+      this.trailerKey = this.video[0].key;
     }
 
-    this.router.navigate(['/video', this.trailerKey])
+    this.router.navigate(['/video', this.trailerKey]);
   }
 }
