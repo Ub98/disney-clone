@@ -12,6 +12,6 @@ export class EnterEmailComponent {
   constructor(private authService: AuthService) {}
 
   onEmailChange() {
-    this.authService.emitEmail(this.email);
+    this.authService.emailChange(this.email)
   }
 }

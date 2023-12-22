@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { Subscription } from 'rxjs';
+import { Subscription, catchError, of } from 'rxjs';
+import { LoginDto } from '../../models/auth';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-enter-password',
@@ -8,25 +11,28 @@ import { Subscription } from 'rxjs';
   styleUrl: './enter-password.component.scss',
 })
 export class EnterPasswordComponent {
-  private errorMessageSubscription: Subscription;
   hide = true;
   password!: string;
   errorMessage!: string;
+  model!: LoginDto;
 
-  constructor(public authService: AuthService) {
-    this.errorMessageSubscription = this.authService.errorMessage$.subscribe(
-      (error) => {
-        this.errorMessage = error;
-      }
-    );
-  }
+  constructor(public authService: AuthService, private router: Router) {}
 
   onButtonClick() {
-    this.authService.emitPassword(this.password);
-    this.authService.emitButtonClick();
-  }
+    this.model = new LoginDto(this.authService.isEmail, this.password);
 
-  ngOnDestroy() {
-    this.errorMessageSubscription.unsubscribe();
+    this.authService
+      .login(this.model)
+      .pipe(
+        catchError((err: HttpErrorResponse) => {
+          this.errorMessage = err.error;
+          return of(undefined);
+        })
+      )
+      .subscribe((loggedUser) => {
+        if (loggedUser) {
+          this.router.navigate(['/home']);
+        }
+      });
   }
 }

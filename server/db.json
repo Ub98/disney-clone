@@ -2,10 +2,15 @@
   "users": [
     {
       "email": "test@test.com",
-      "password": "$2a$10$UGakjE8kXB9gBKPWMFbbd.zRcECPulWDzYkm7d/UgQiQ3KW9Z5GO2",
+      "password": "$2a$10$z8VPqIr9IulELidpJuk.v.B.eSpgsmmgHgLuz3SkhAiKH0eLHSCDq",
       "name": "Ubaldo",
       "id": 1
+    },
+    {
+      "email": "test2@test.com",
+      "password": "$2a$10$QiI1XdjvbfUZJrYIOuy3D.YVUMjjP6kK3nL6zYAleWBqOzCeTc8Uu",
+      "name": "ufo",
+      "id": 2
     }
-  ],
-  "posts": []
+  ]
 }
