@@ -16,9 +16,10 @@ import { RegisterComponent } from './components/register/register.component';
 import { EnterEmailComponent } from './components/enter-email/enter-email.component';
 import { EnterPasswordComponent } from './components/enter-password/enter-password.component';
 import { authGuard } from './guards/auth.guard';
+import { isLoggedGuard } from './guards/is-logged.guard';
 
 const routes: Routes = [
-  { path: 'start', component: StartComponent },
+  { path: 'start', component: StartComponent, canActivate:[isLoggedGuard] },
   { path: 'home', component: HomeComponent, canActivate: [authGuard] },
   { path: 'search', component: SearchComponent, canActivate: [authGuard] },
   { path: 'my-list', component: MyListComponent, canActivate: [authGuard] },

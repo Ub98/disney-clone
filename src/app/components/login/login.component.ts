@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { Subscription} from 'rxjs';
+import { Subscription, catchError, of } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { LoginDto } from '../../models/auth';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -33,11 +34,20 @@ export class LoginComponent {
       () => {
         this.model = new LoginDto(this.email, this.password);
 
-        this.authService.login(this.model).subscribe((loggedUser) => {
-          if (loggedUser) {
-            this.router.navigate(['/home']);
-          }
-        });
+        this.authService
+          .login(this.model)
+          .pipe(
+            catchError((err: HttpErrorResponse) => {
+              this.errorMessage = err.error;
+              this.authService.emitError(this.errorMessage);
+              return of(undefined);
+            })
+          )
+          .subscribe((loggedUser) => {
+            if (loggedUser) {
+              this.router.navigate(['/home']);
+            }
+          });
       }
     );
   }

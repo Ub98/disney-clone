@@ -11,16 +11,24 @@ export class AuthService {
   private emailSource = new Subject<string>();
   private passwordSource = new Subject<string>();
   private buttonClickSource = new Subject<void>();
+  private errorMessageSource = new Subject<string>();
   email!: string;
   password!: string;
+  errorMessage!:string
 
   email$ = this.emailSource.asObservable();
   password$ = this.passwordSource.asObservable();
   buttonClick$ = this.buttonClickSource.asObservable();
+  errorMessage$ = this.errorMessageSource.asObservable();
 
   emitEmail(email: string) {
     this.emailSource.next(email);
     this.email = email;
+  }
+
+  emitError(errorMessage: string) {
+    this.errorMessageSource.next(errorMessage);
+    this.errorMessage = errorMessage;    
   }
 
   emitPassword(password: string) {

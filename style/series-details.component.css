@@ -176,7 +176,7 @@
 }
 .wrap ::ng-deep .detail mat-tab-group .episodi .episodi-card {
   display: flex;
-  min-height: 470px;
+  min-height: 480px;
 }
 .wrap ::ng-deep .detail mat-tab-group .episodi .episodi-card .card-img {
   width: 315px;
@@ -290,6 +290,9 @@
 .wrap ::ng-deep .detail mat-tab-group .wrap-article article h2 {
   font-size: 2em;
   margin-bottom: 10px;
+}
+.wrap ::ng-deep .detail mat-tab-group .wrap-article article .overview {
+  color: #cacaca;
 }
 .wrap ::ng-deep .detail mat-tab-group .wrap-article article p {
   font-size: 1.4em;

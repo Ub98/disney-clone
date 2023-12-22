@@ -15,8 +15,13 @@ export class MovieComponent implements OnInit {
   movies: Movie[] = [];
   page: number = 1;
   genreValue?: any;
+  loading: boolean = true;
 
-  constructor(private gs: GenreService, private ms: MovieService, private loader: LoaderService) {}
+  constructor(
+    private gs: GenreService,
+    private ms: MovieService,
+    private loader: LoaderService
+  ) {}
 
   ngOnInit(): void {
     this.gs.getGenreMovie().subscribe((genre) => {
@@ -29,13 +34,14 @@ export class MovieComponent implements OnInit {
   change(event: any) {
     this.genreValue = event.target.value;
     this.page = 1;
-    this.movies = []
+    this.movies = [];
     this.getMovie();
   }
 
   getMovie() {
     this.gs.getMovieByGenre(this.genreValue, this.page).subscribe((movie) => {
       this.movies = [...this.movies, ...movie.results];
+      this.loading = false;
     });
   }
 
@@ -43,7 +49,7 @@ export class MovieComponent implements OnInit {
   onScroll(): void {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
       this.page++;
-      this.getMovie()
+      this.getMovie();
     }
   }
 }

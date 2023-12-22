@@ -245,6 +245,9 @@
   font-size: 2em;
   margin-bottom: 10px;
 }
+.wrap ::ng-deep .detail mat-tab-group .wrap-article article .overview {
+  color: #cacaca;
+}
 .wrap ::ng-deep .detail mat-tab-group .wrap-article article p {
   font-size: 1.4em;
   display: flex;

@@ -14,6 +14,7 @@ export class SeriesComponent {
   movies: Movie[] = [];
   page: number = 1;
   genreValue?: any;
+  loading: boolean = true
 
   constructor(private gs: GenreService, private ms: MovieService) {}
   ngOnInit(): void {
@@ -34,6 +35,7 @@ export class SeriesComponent {
   getSerie() {
     this.gs.getSerieByGenre(this.genreValue, this.page).subscribe((movie) => {
       this.movies = [...this.movies, ...movie.results];
+      this.loading = false
     });
   }
 

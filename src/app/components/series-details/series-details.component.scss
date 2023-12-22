@@ -180,7 +180,7 @@
         }
         .episodi-card {
           display: flex;
-          min-height: 470px;
+          min-height: 480px;
           .card-img {
             width: 315px;
             height: 470px;
@@ -296,6 +296,9 @@
           h2 {
             font-size: 2em;
             margin-bottom: 10px;
+          }
+          .overview{
+            color: #cacaca;
           }
           p {
             font-size: 1.4em;

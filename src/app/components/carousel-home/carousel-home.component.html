@@ -1,13 +1,18 @@
-<div class="wrap">
-  <ngx-slick-carousel [config]="slideConfig">
-    <div ngxSlickItem class="slide" *ngFor="let movie of movies">
-      <a [routerLink]="movie.media_type == 'tv' ? ['/series-details', movie.id] : ['/movie-details', movie.id]">
-        <img
-          [src]="'https://image.tmdb.org/t/p/original' + movie.backdrop_path"
-          alt=""
-          width="100%"
-        />
-      </a>
-    </div>
-  </ngx-slick-carousel>
-</div>
+@if (!loading) {
+  <div class="wrap">
+    <ngx-slick-carousel [config]="slideConfig">
+      <div ngxSlickItem class="slide" *ngFor="let movie of movies">
+        <a [routerLink]="movie.media_type == 'tv' ? ['/series-details', movie.id] : ['/movie-details', movie.id]">
+          <img
+            [src]="'https://image.tmdb.org/t/p/original' + movie.backdrop_path"
+            alt=""
+            width="100%"
+          />
+        </a>
+      </div>
+    </ngx-slick-carousel>
+  </div>
+  
+}@else {
+  <app-loader></app-loader>
+}

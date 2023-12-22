@@ -6,9 +6,9 @@ import { Search } from '../../models/search';
 @Component({
   selector: 'app-carousel-home',
   templateUrl: './carousel-home.component.html',
-  styleUrl: './carousel-home.component.scss'
+  styleUrl: './carousel-home.component.scss',
 })
-export class CarouselHomeComponent implements OnInit{
+export class CarouselHomeComponent implements OnInit {
   slideConfig = {
     infinite: true,
     slidesToShow: 1,
@@ -21,9 +21,13 @@ export class CarouselHomeComponent implements OnInit{
   };
 
   movies: Search[] = [];
+  loading: boolean = true;
   constructor(private ms: MovieService) {}
 
   ngOnInit(): void {
-    this.ms.getTrendingDay().subscribe((movie) => {this.movies = movie.results});
+    this.ms.getTrendingDay().subscribe((movie) => {
+      this.movies = movie.results;
+      this.loading = false;
+    });
   }
 }

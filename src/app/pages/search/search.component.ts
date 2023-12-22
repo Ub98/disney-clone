@@ -14,6 +14,7 @@ export class SearchComponent implements OnInit {
   page: number = 1;
   movies: Movie[] = [];
   searchData: Search[] = []
+  loading:boolean= true
 
   constructor(private ms: MovieService, private searchService: SearchService) {}
   ngOnInit(): void {
@@ -23,6 +24,7 @@ export class SearchComponent implements OnInit {
   getMovieData() {
     this.ms.getMovieData(this.page).subscribe((data) => {
       this.movies = [...this.movies, ...data.results];
+      this.loading = false
     });
   }
 
