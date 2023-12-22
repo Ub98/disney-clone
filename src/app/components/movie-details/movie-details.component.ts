@@ -4,6 +4,9 @@ import { MovieService } from '../../services/movie.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VideoService } from '../../services/video.service';
 import { Video } from '../../models/video';
+import { FavoriteService } from '../../services/favorite.service';
+import { Search } from '../../models/search';
+import { ResponseSeriesId } from '../../models/series';
 
 @Component({
   selector: 'app-movie-details',
@@ -22,7 +25,8 @@ export class MovieDetailsComponent {
     private ms: MovieService,
     private route: ActivatedRoute,
     private vs: VideoService,
-    private router: Router
+    private router: Router,
+    private fs: FavoriteService
   ) {}
   ngOnInit(): void {
 
@@ -95,5 +99,10 @@ export class MovieDetailsComponent {
     }
 
     this.router.navigate(['/video', this.trailerKey]);
+  }
+
+  addFavorite(movie: ResponseMovieId | ResponseSeriesId){
+    this.fs.addFavorite(movie).subscribe(movie=> console.log("add")
+    )
   }
 }

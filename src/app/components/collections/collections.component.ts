@@ -15,6 +15,7 @@ export class CollectionsComponent implements OnInit {
   movies2: Search[] = [];
   opacityValue: number = 1;
   company!: string;
+  loading: boolean = true
 
   constructor(private searchService: SearchService, private route: ActivatedRoute) {}
 
@@ -26,6 +27,7 @@ export class CollectionsComponent implements OnInit {
       });
       this.searchService.getSearch(this.company, 2).subscribe((data) => {
         this.movies2 = data.results;
+        this.loading = false
       });
     }
   }

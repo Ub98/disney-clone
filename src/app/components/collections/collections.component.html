@@ -1,81 +1,85 @@
-<div class="wrap">
-  <div class="contain-video" [ngStyle]="{ opacity: opacityValue }">
-    @switch (company) { @case ("disney") {
-    <video
-      src="https://vod-bgc-eu-west-1.media.dssott.com/bgui/ps01/disney/bgui/2021/11/04/1636056497-disney.mp4"
-      autoplay
-      muted
-      loop
-    ></video>
-    } @case ("pixar") {
-    <video
-      src="https://vod-bgc-eu-west-1.media.dssott.com/bgui/ps01/disney/bgui/2021/11/04/1636056639-pixar.mp4"
-      autoplay
-      muted
-      loop
-    ></video>
-    } @case ("marvel") {
-    <video
-      src="https://vod-bgc-eu-west-1.media.dssott.com/bgui/ps01/disney/bgui/2023/06/13/1686685609-marvel.mp4"
-      autoplay
-      muted
-      loop
-    ></video>
-    } @case ("star-wars") {
-    <video
-      src="https://vod-bgc-eu-west-1.media.dssott.com/bgui/ps01/disney/bgui/2021/11/04/1636056809-star-wars.mp4"
-      autoplay
-      muted
-      loop
-    ></video>
-    } @case ("national-geographic") {
-    <video
-      src="https://vod-bgc-eu-west-1.media.dssott.com/bgui/ps01/disney/bgui/2021/11/04/1636056567-national-geographic.mp4"
-      autoplay
-      muted
-      loop
-    ></video>
-    } @case ("star") {
-    <video
-      src="https://vod-bgc-eu-west-1.media.dssott.com/bgui/ps01/disney/bgui/2020/12/16/1608080788-brand-star.mp4"
-      autoplay
-      muted
-      loop
-    ></video>
-    } }
-
-    <div class="shadow"></div>
-  </div>
-
-  <div class="detail">
-    <h2>In primo piano</h2>
-    <ngx-slick-carousel [config]="slideConfig">
-      <ng-container *ngFor="let movie of movies">
-        <div ngxSlickItem class="slide" *ngIf="movie.backdrop_path">
-          <a [routerLink]="movie.media_type == 'tv' ? ['/series-details', movie.id] : ['/movie-details', movie.id]">
-            <img
-              [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
-              alt="{{ movie.title }}"
-              style="transform: scale(1.02)"
-            />
-          </a>
-        </div>
-      </ng-container>
-    </ngx-slick-carousel>
-    <h2>Original</h2>
-    <ngx-slick-carousel [config]="slideConfig">
-      <ng-container *ngFor="let movie of movies2">
-        <div ngxSlickItem class="slide" *ngIf="movie.backdrop_path">
-          <a [routerLink]="movie.media_type == 'tv' ? ['/series-details', movie.id] : ['/movie-details', movie.id]">
-            <img
-              [src]="
-                'https://image.tmdb.org/t/p/w400' + movie.backdrop_path
-              "
-              alt="{{ movie.title }}"
-            />
-          </a>
-        </div>
-      </ng-container>
-    </ngx-slick-carousel>
-  </div>
-</div>
+@if (!loading) {
+  <div class="wrap">
+    <div class="contain-video" [ngStyle]="{ opacity: opacityValue }">
+      @switch (company) { @case ("disney") {
+      <video
+        src="https://vod-bgc-eu-west-1.media.dssott.com/bgui/ps01/disney/bgui/2021/11/04/1636056497-disney.mp4"
+        autoplay
+        muted
+        loop
+      ></video>
+      } @case ("pixar") {
+      <video
+        src="https://vod-bgc-eu-west-1.media.dssott.com/bgui/ps01/disney/bgui/2021/11/04/1636056639-pixar.mp4"
+        autoplay
+        muted
+        loop
+      ></video>
+      } @case ("marvel") {
+      <video
+        src="https://vod-bgc-eu-west-1.media.dssott.com/bgui/ps01/disney/bgui/2023/06/13/1686685609-marvel.mp4"
+        autoplay
+        muted
+        loop
+      ></video>
+      } @case ("star-wars") {
+      <video
+        src="https://vod-bgc-eu-west-1.media.dssott.com/bgui/ps01/disney/bgui/2021/11/04/1636056809-star-wars.mp4"
+        autoplay
+        muted
+        loop
+      ></video>
+      } @case ("national-geographic") {
+      <video
+        src="https://vod-bgc-eu-west-1.media.dssott.com/bgui/ps01/disney/bgui/2021/11/04/1636056567-national-geographic.mp4"
+        autoplay
+        muted
+        loop
+      ></video>
+      } @case ("star") {
+      <video
+        src="https://vod-bgc-eu-west-1.media.dssott.com/bgui/ps01/disney/bgui/2020/12/16/1608080788-brand-star.mp4"
+        autoplay
+        muted
+        loop
+      ></video>
+      } }
+  
+      <div class="shadow"></div>
+    </div>
+  
+    <div class="detail">
+      <h2>In primo piano</h2>
+      <ngx-slick-carousel [config]="slideConfig">
+        <ng-container *ngFor="let movie of movies">
+          <div ngxSlickItem class="slide" *ngIf="movie.backdrop_path">
+            <a [routerLink]="movie.media_type == 'tv' ? ['/series-details', movie.id] : ['/movie-details', movie.id]">
+              <img
+                [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
+                alt="{{ movie.title }}"
+                style="transform: scale(1.02)"
+              />
+            </a>
+          </div>
+        </ng-container>
+      </ngx-slick-carousel>
+      <h2>Original</h2>
+      <ngx-slick-carousel [config]="slideConfig">
+        <ng-container *ngFor="let movie of movies2">
+          <div ngxSlickItem class="slide" *ngIf="movie.backdrop_path">
+            <a [routerLink]="movie.media_type == 'tv' ? ['/series-details', movie.id] : ['/movie-details', movie.id]">
+              <img
+                [src]="
+                  'https://image.tmdb.org/t/p/w400' + movie.backdrop_path
+                "
+                alt="{{ movie.title }}"
+              />
+            </a>
+          </div>
+        </ng-container>
+      </ngx-slick-carousel>
+    </div>
+  </div>  
+}@else {
+  <app-loader></app-loader>
+}

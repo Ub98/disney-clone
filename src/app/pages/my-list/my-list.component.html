@@ -1,5 +1,23 @@
-<div class="center">
-  <span class="material-symbols-outlined"> add_circle </span>
-  <h2>La tua lista è vuota</h2>
-  <p>Il contenuto aggiunto alla tua lista verrà mostrato qui.</p>
-</div>
+@if (movieFavorite.length) {
+ <div class="wrap">
+  <h2>La tua lista</h2>
+  <h4>I tuoi film e serie</h4>
+  <div class="container">
+    <ng-container *ngFor="let movie of movieFavorite">
+      <div class="card" *ngIf="movie.backdrop_path">
+        <a [routerLink]="['/movie-details', movie.id]">
+          <img
+            [src]="'https://image.tmdb.org/t/p/w400' + movie.backdrop_path"
+          />
+        </a>
+      </div>
+    </ng-container>
+  </div>
+ </div>
+}@else {
+  <div class="center">
+    <span class="material-symbols-outlined"> add_circle </span>
+    <h2>La tua lista è vuota</h2>
+    <p>Il contenuto aggiunto alla tua lista verrà mostrato qui.</p>
+  </div>
+}

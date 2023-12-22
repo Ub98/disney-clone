@@ -1,135 +1,134 @@
 @if (!loading) {
-  <div class="wrap" *ngIf="series">
-    <div class="contain-img" [ngStyle]="{ opacity: opacityValue }">
-      <img
-        [src]="'https://image.tmdb.org/t/p/original' + series.backdrop_path"
-        alt=""
-      />
-      <div class="shadow"></div>
-    </div>
-    <div class="detail">
-      <article>
-        <h1>{{ series.name }}</h1>
-        <div class="release">
-          <p>{{ series.last_air_date }}</p>
-        </div>
-        <div class="genres">
-          <p *ngFor="let genre of series.genres; let last = last">
-            {{ genre.name }}{{ !last ? "," : "" }}
-          </p>
-        </div>
-        <div class="contain-btn">
-          <button class="play-btn">
-            <span class="material-symbols-outlined"> play_arrow </span>Riproduci
-          </button>
-          <button
-            class="trailer-btn"
-            (click)="onClickTrailer()"
-            *ngIf="video?.length"
-          >
-            Trailer
-          </button>
-          <button class="add">
-            <span class="material-symbols-outlined"> add </span>
-          </button>
-        </div>
-        <div class="tagline">
-          <p>{{ series.tagline }}</p>
-        </div>
-      </article>
-      <mat-tab-group
-        mat-stretch-tabs="false"
-        mat-align-tabs="start"
-        animationDuration="0ms"
-      >
-        <mat-tab label="EPISODI">
-          <div class="episodi">
-            <mat-tab-group animationDuration="0ms">
-              <mat-tab
-                [label]="seasons.name"
-                *ngFor="let seasons of series.seasons"
-              >
-                <div class="episodi-card">
-                  <div class="card-img">
-                    <img
-                      [src]="
-                        'https://image.tmdb.org/t/p/w500' +
-                        seasons.poster_path
-                      "
-                      [alt]="seasons.name"
-                      *ngIf="seasons.poster_path"
-                    />
-                  </div>
-                  <article>
-                    <p *ngIf="seasons.air_date">
-                      Data: <span>{{ seasons.air_date }}</span>
-                    </p>
-                    <p *ngIf="seasons.episode_count">
-                      Episodi: <span>{{ seasons.episode_count }}</span>
-                    </p>
-                    <p *ngIf="seasons.overview">
-                      Descrizione: <span>{{ seasons.overview }}</span>
-                    </p>
-                  </article>
-                </div>
-              </mat-tab>
-            </mat-tab-group>
-          </div>
-        </mat-tab>
-        <mat-tab label="CONSIGLIATI">
-          <ngx-slick-carousel [config]="slideConfig">
-            <ng-container *ngFor="let series of similar">
-              <div ngxSlickItem class="slide" *ngIf="series.backdrop_path">
-                <a [routerLink]="['/series-details', series.id]">
+<div class="wrap" *ngIf="series">
+  <div class="contain-img" [ngStyle]="{ opacity: opacityValue }">
+    <img
+      [src]="'https://image.tmdb.org/t/p/original' + series.backdrop_path"
+      alt=""
+    />
+    <div class="shadow"></div>
+  </div>
+  <div class="detail">
+    <article>
+      <h1>{{ series.name }}</h1>
+      <div class="release">
+        <p>{{ series.last_air_date }}</p>
+      </div>
+      <div class="genres">
+        <p *ngFor="let genre of series.genres; let last = last">
+          {{ genre.name }}{{ !last ? "," : "" }}
+        </p>
+      </div>
+      <div class="contain-btn">
+        <button class="play-btn">
+          <span class="material-symbols-outlined"> play_arrow </span>Riproduci
+        </button>
+        <button
+          class="trailer-btn"
+          (click)="onClickTrailer()"
+          *ngIf="video?.length"
+        >
+          Trailer
+        </button>
+        <button class="add" (click)="addFavorite(series)">
+          <span class="material-symbols-outlined"> add </span>
+        </button>
+      </div>
+      <div class="tagline">
+        <p>{{ series.tagline }}</p>
+      </div>
+    </article>
+    <mat-tab-group
+      mat-stretch-tabs="false"
+      mat-align-tabs="start"
+      animationDuration="0ms"
+    >
+      <mat-tab label="EPISODI">
+        <div class="episodi">
+          <mat-tab-group animationDuration="0ms">
+            <mat-tab
+              [label]="seasons.name"
+              *ngFor="let seasons of series.seasons"
+            >
+              <div class="episodi-card">
+                <div class="card-img">
                   <img
                     [src]="
-                      'https://image.tmdb.org/t/p/w400' + series.backdrop_path
+                      'https://image.tmdb.org/t/p/w500' + seasons.poster_path
                     "
-                    alt="{{ series.name }}"
+                    [alt]="seasons.name"
+                    *ngIf="seasons.poster_path"
                   />
-                </a>
+                </div>
+                <article>
+                  <p *ngIf="seasons.air_date">
+                    Data: <span>{{ seasons.air_date }}</span>
+                  </p>
+                  <p *ngIf="seasons.episode_count">
+                    Episodi: <span>{{ seasons.episode_count }}</span>
+                  </p>
+                  <p *ngIf="seasons.overview">
+                    Descrizione: <span>{{ seasons.overview }}</span>
+                  </p>
+                </article>
               </div>
-            </ng-container>
-          </ngx-slick-carousel>
-        </mat-tab>
-        <mat-tab label="EXTRA">
-          <div class="production">
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </mat-tab>
+      <mat-tab label="CONSIGLIATI">
+        <ngx-slick-carousel [config]="slideConfig">
+          <ng-container *ngFor="let series of similar">
+            <div ngxSlickItem class="slide" *ngIf="series.backdrop_path">
+              <a [routerLink]="['/series-details', series.id]">
+                <img
+                  [src]="
+                    'https://image.tmdb.org/t/p/w400' + series.backdrop_path
+                  "
+                  alt="{{ series.name }}"
+                />
+              </a>
+            </div>
+          </ng-container>
+        </ngx-slick-carousel>
+      </mat-tab>
+      <mat-tab label="EXTRA">
+        <div class="production">
+          <p>
+            Prodotto in:
+            <span *ngFor="let production of series.production_countries">{{
+              production.name
+            }}</span>
+          </p>
+          <p>
+            Prodotto da:
+            <span *ngFor="let companies of series.production_companies">{{
+              companies.name
+            }}</span>
+          </p>
+        </div>
+      </mat-tab>
+      <mat-tab label="DETTAGLI">
+        <div class="wrap-article">
+          <article>
+            <h2>{{ series.name }}</h2>
+            <p class="overview">
+              {{ series.overview }}
+            </p>
+          </article>
+          <article>
             <p>
-              Prodotto in:
-              <span *ngFor="let production of series.production_countries">{{
-                production.name
-              }}</span>
+              Data di uscita: <span>{{ series.last_air_date }}</span>
             </p>
             <p>
-              Prodotto da:
-              <span *ngFor="let companies of series.production_companies">{{
-                companies.name
-              }}</span>
+              Genere:
+              <span *ngFor="let genre of series.genres">{{ genre.name }}</span>
             </p>
-          </div>
-        </mat-tab>
-        <mat-tab label="DETTAGLI">
-          <div class="wrap-article">
-            <article>
-              <h2>{{ series.name }}</h2>
-              <p class="overview">
-                {{ series.overview }}
-              </p>
-            </article>
-            <article>
-              <p>
-                Data di uscita: <span>{{ series.last_air_date }}</span>
-              </p>
-              <p>
-                Genere:
-                <span *ngFor="let genre of series.genres">{{ genre.name }}</span>
-              </p>
-            </article>
-          </div>
-        </mat-tab>
-      </mat-tab-group>
-    </div>
-  </div>  
+          </article>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
 }@else {
-  <app-loader></app-loader>
+<app-loader></app-loader>
 }

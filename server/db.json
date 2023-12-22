@@ -12,5 +12,81 @@
       "name": "ufo",
       "id": 2
     }
+  ],
+  "favorite": [
+    {
+      "userId": 1,
+      "movie": {
+        "adult": false,
+        "backdrop_path": "/8GnWDLn2AhnmkQ7hlQ9NJUYobSS.jpg",
+        "belongs_to_collection": {
+          "id": 131635,
+          "name": "Hunger Games - Collezione",
+          "poster_path": "/fPer2U4uQT1dkXTUWODDaLECWoW.jpg",
+          "backdrop_path": "/Ipp7cegtub4t0mu7xaKLQkYoGc.jpg"
+        },
+        "budget": 100000000,
+        "genres": [
+          {
+            "id": 18,
+            "name": "Dramma"
+          },
+          {
+            "id": 878,
+            "name": "Fantascienza"
+          },
+          {
+            "id": 28,
+            "name": "Azione"
+          }
+        ],
+        "homepage": "",
+        "id": 695721,
+        "imdb_id": "tt10545296",
+        "original_language": "en",
+        "original_title": "The Hunger Games: The Ballad of Songbirds & Snakes",
+        "overview": "Anni prima di diventare il tirannico presidente di Panem, il diciottenne Coriolanus Snow è l’ultima speranza per il buon nome della sua casata in declino: un’orgogliosa famiglia caduta in disgrazia nel dopoguerra di Capitol City. Con l’avvicinarsi della decima edizione degli Hunger Games, il giovane Snow teme per la sua reputazione poiché nominato mentore di Lucy Grey Baird, la ragazza tributo del miserabile Distretto 12. Ma quando Lucy Grey magnetizza l’intera nazione di Panem cantando con aria di sfida alla cerimonia della mietitura, Snow comprende che potrebbe ribaltare la situazione a suo favore. Unendo i loro istinti per lo spettacolo e l’astuzia politica, Snow e Lucy mireranno alla sopravvivenza dando vita a una corsa contro il tempo che decreterà chi è l’usignolo e chi il serpente.",
+        "popularity": 1134.139,
+        "poster_path": "/bk2Bh5mD3uvyKDaXKTAOGfoCTq5.jpg",
+        "production_companies": [
+          {
+            "id": 1632,
+            "logo_path": "/cisLn1YAUuptXVBa0xjq7ST9cH0.png",
+            "name": "Lionsgate",
+            "origin_country": "US"
+          },
+          {
+            "id": 5420,
+            "logo_path": "/dlW4Kh5dNieKNURnymsu57y6fMf.png",
+            "name": "Color Force",
+            "origin_country": "US"
+          }
+        ],
+        "production_countries": [
+          {
+            "iso_3166_1": "US",
+            "name": "United States of America"
+          }
+        ],
+        "release_date": "2023-11-15",
+        "revenue": 289400000,
+        "runtime": 157,
+        "spoken_languages": [
+          {
+            "english_name": "English",
+            "iso_639_1": "en",
+            "name": "English"
+          }
+        ],
+        "status": "Released",
+        "tagline": "",
+        "title": "Hunger Games - La ballata dell'usignolo e del serpente",
+        "video": false,
+        "vote_average": 7.3,
+        "vote_count": 873
+      },
+      "isFavorite": true,
+      "id": 1
+    }
   ]
 }

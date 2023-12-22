@@ -6,6 +6,7 @@ import { SeriesService } from '../../services/series.service';
 import { ResponseSeriesId, Series } from '../../models/series';
 import { VideoService } from '../../services/video.service';
 import { Video } from '../../models/video';
+import { FavoriteService } from '../../services/favorite.service';
 
 @Component({
   selector: 'app-series-details',
@@ -24,7 +25,8 @@ export class SeriesDetailsComponent {
     private ss: SeriesService,
     private route: ActivatedRoute,
     private vs: VideoService,
-    private router: Router
+    private router: Router,
+    private fs: FavoriteService
   ) {}
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
@@ -89,5 +91,9 @@ export class SeriesDetailsComponent {
   onClickTrailer() {
     this.trailerKey = this.video[0].key;
     this.router.navigate(['/video', this.trailerKey]);
+  }
+
+  addFavorite(movie: ResponseMovieId | ResponseSeriesId){
+    this.fs.addFavorite(movie).subscribe(movie=> console.log("add"))
   }
 }

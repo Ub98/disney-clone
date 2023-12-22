@@ -19,7 +19,7 @@ import { authGuard } from './guards/auth.guard';
 import { isLoggedGuard } from './guards/is-logged.guard';
 
 const routes: Routes = [
-  { path: 'start', component: StartComponent, canActivate:[isLoggedGuard] },
+  { path: 'home-page', component: StartComponent, canActivate:[isLoggedGuard] },
   { path: 'home', component: HomeComponent, canActivate: [authGuard] },
   { path: 'search', component: SearchComponent, canActivate: [authGuard] },
   { path: 'my-list', component: MyListComponent, canActivate: [authGuard] },
@@ -55,7 +55,7 @@ const routes: Routes = [
     component: CollectionsComponent,
     canActivate: [authGuard],
   },
-  { path: '', redirectTo: 'start', pathMatch: 'full' },
+  { path: '', redirectTo: 'home-page', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
 ];
 
