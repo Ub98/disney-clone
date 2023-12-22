@@ -18,6 +18,7 @@ export class SeriesDetailsComponent {
   opacityValue: number = 1;
   video!: Video[];
   trailerKey!: string;
+  loading: boolean = true;
 
   constructor(
     private ss: SeriesService,
@@ -28,13 +29,14 @@ export class SeriesDetailsComponent {
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       const id = params.get('id');
-      
+
       if (id) {
         this.ss.getSeriesById(Number(id)).subscribe((data) => {
           this.series = data;
         });
         this.ss.getSimilarById(Number(id)).subscribe((serie) => {
           this.similar = serie.results;
+          this.loading = false;
         });
         this.vs.getVideoSeries(Number(id)).subscribe((video) => {
           this.video = video.results;

@@ -16,6 +16,7 @@ export class MovieDetailsComponent {
   opacityValue: number = 1;
   video!: Video[];
   trailerKey!: string;
+  loading: boolean = true
 
   constructor(
     private ms: MovieService,
@@ -33,6 +34,7 @@ export class MovieDetailsComponent {
         });
         this.ms.getSimilarById(Number(id)).subscribe((movie) => {
           this.similar = movie.results;
+          this.loading = false
         });
         this.vs.getVideoMovie(Number(id)).subscribe((video) => {
           this.video = video.results;
