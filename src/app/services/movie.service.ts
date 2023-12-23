@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ResponseMovie, ResponseMovieId } from '../models/movie';
 import { environment } from '../../environments/environment';
-import { ResponseSearch } from '../models/search';
+import { ResponseSearch, Search } from '../models/search';
 
 @Injectable({
   providedIn: 'root',

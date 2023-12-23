@@ -20,6 +20,8 @@ export class MovieDetailsComponent {
   video!: Video[];
   trailerKey!: string;
   loading: boolean = true
+  movieId!: number
+  mediaType:string = 'movie'
 
   constructor(
     private ms: MovieService,
@@ -32,6 +34,7 @@ export class MovieDetailsComponent {
 
     this.route.paramMap.subscribe((params) => {
       const id = params.get('id');
+      this.movieId = Number(id)
       if (id) {
         this.ms.getMovieById(Number(id)).subscribe((data) => {
           this.movie = data;
@@ -102,7 +105,7 @@ export class MovieDetailsComponent {
   }
 
   addFavorite(movie: ResponseMovieId | ResponseSeriesId){
-    this.fs.addFavorite(movie).subscribe(movie=> console.log("add")
+    this.fs.addFavorite(this.movieId, movie, this.mediaType).subscribe(movie=> console.log("add")
     )
   }
 }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Search } from '../../models/search';
 import { FavoriteService } from '../../services/favorite.service';
 import { ResponseMovieId } from '../../models/movie';
 import { ResponseSeriesId } from '../../models/series';
+import { Favorite } from '../../models/favorite';
 
 @Component({
   selector: 'app-my-list',
@@ -10,12 +10,12 @@ import { ResponseSeriesId } from '../../models/series';
   styleUrl: './my-list.component.scss',
 })
 export class MyListComponent implements OnInit {
-  movieFavorite: (ResponseMovieId | ResponseSeriesId)[] = [];
+  favorites: Favorite[] = []
 
   constructor(private fs: FavoriteService) {}
   ngOnInit(): void {
     this.fs.getFavorite().subscribe((movie) => {
-      this.movieFavorite = movie.map((movie) => movie.movie)
+      this.favorites = movie            
     });
   }
 }

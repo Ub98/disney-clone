@@ -1,6 +1,5 @@
 import { Component, HostListener } from '@angular/core';
-import { Movie, ResponseMovieId } from '../../models/movie';
-import { MovieService } from '../../services/movie.service';
+import { ResponseMovieId } from '../../models/movie';
 import { ActivatedRoute, Router, RouterEvent } from '@angular/router';
 import { SeriesService } from '../../services/series.service';
 import { ResponseSeriesId, Series } from '../../models/series';
@@ -20,6 +19,8 @@ export class SeriesDetailsComponent {
   video!: Video[];
   trailerKey!: string;
   loading: boolean = true;
+  movieId!:number
+  mediaType:string = 'tv'
 
   constructor(
     private ss: SeriesService,
@@ -31,6 +32,7 @@ export class SeriesDetailsComponent {
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       const id = params.get('id');
+      this.movieId = Number(id)
 
       if (id) {
         this.ss.getSeriesById(Number(id)).subscribe((data) => {
@@ -94,6 +96,6 @@ export class SeriesDetailsComponent {
   }
 
   addFavorite(movie: ResponseMovieId | ResponseSeriesId){
-    this.fs.addFavorite(movie).subscribe(movie=> console.log("add"))
+    this.fs.addFavorite(this.movieId, movie, this.mediaType).subscribe(movie=> console.log("add"))
   }
 }
