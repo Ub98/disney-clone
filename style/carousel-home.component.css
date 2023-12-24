@@ -1,0 +1,83 @@
+.wrap ::ng-deep {
+  padding-top: 100px;
+}
+.wrap ::ng-deep .slick-slider {
+  margin: 0;
+  display: flex;
+}
+.wrap ::ng-deep .slick-slider .slick-prev {
+  height: 100%;
+  width: calc(3.5vw + 24px);
+  margin: 0;
+  left: 0;
+  top: 43%;
+  z-index: 1;
+  opacity: 0;
+}
+.wrap ::ng-deep .slick-slider .slick-prev:hover {
+  opacity: 1;
+}
+.wrap ::ng-deep .slick-slider .slick-prev::before {
+  font-family: "ArrowIcon";
+  font-size: 2rem;
+  color: white;
+  content: "\e803";
+}
+.wrap ::ng-deep .slick-slider .slick-next {
+  height: 100%;
+  width: calc(3.5vw + 24px);
+  margin: 0;
+  right: 0;
+  top: 43%;
+  z-index: 1;
+  opacity: 0;
+}
+.wrap ::ng-deep .slick-slider .slick-next:hover {
+  opacity: 1;
+}
+.wrap ::ng-deep .slick-slider .slick-next::before {
+  font-family: "ArrowIcon";
+  color: white;
+  content: "\e802";
+  font-size: 2rem;
+}
+.wrap ::ng-deep .slick-slider .slick-list {
+  width: 100%;
+  padding-top: 50px;
+}
+.wrap ::ng-deep .slick-slider .slick-list .slick-slide {
+  margin: 0 10px;
+  box-shadow: rgba(0, 0, 0, 0.69) 0px 26px 30px -10px, rgba(0, 0, 0, 0.73) 0px 16px 10px -10px;
+  border: 3px solid transparent;
+  border-radius: 6px;
+  transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+}
+.wrap ::ng-deep .slick-slider .slick-list .slick-slide:hover {
+  border: 3px solid white;
+  border-radius: 6px;
+}
+.wrap ::ng-deep .slick-slider .slick-list .slick-slide img {
+  border-radius: 6px;
+  object-fit: cover;
+  object-position: 50% 10%;
+  height: 368px;
+  width: 100%;
+}
+.wrap ::ng-deep .slick-slider .slick-dots {
+  bottom: 45px;
+  right: calc(3.5vw + 44px);
+  z-index: 1;
+  display: flex;
+  justify-content: end;
+}
+.wrap ::ng-deep .slick-slider .slick-dots li {
+  margin: 0;
+}
+.wrap ::ng-deep .slick-slider .slick-dots li.slick-active button::before {
+  opacity: 1;
+  color: #f9f9f9;
+}
+.wrap ::ng-deep .slick-slider .slick-dots li button::before {
+  color: grey;
+  opacity: 1;
+}
