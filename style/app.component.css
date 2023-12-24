@@ -1,7 +1,0 @@
-div.body {
-  background: url(../assets/images/home-background.png) no-repeat center center;
-  background-size: cover;
-}
-div.body .wrap {
-  min-height: 100vh;
-}
