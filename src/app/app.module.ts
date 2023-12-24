@@ -34,7 +34,7 @@ import { EnterEmailComponent } from './components/enter-email/enter-email.compon
 import { EnterPasswordComponent } from './components/enter-password/enter-password.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { JwtExpiredComponent } from './components/jwt-expired/jwt-expired.component';
 
 @NgModule({
@@ -77,7 +77,7 @@ import { JwtExpiredComponent } from './components/jwt-expired/jwt-expired.compon
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    MatIconModule
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
