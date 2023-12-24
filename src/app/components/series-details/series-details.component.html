@@ -29,8 +29,11 @@
         >
           Trailer
         </button>
-        <button class="add" (click)="addFavorite(series)">
+        <button class="add" (click)="addFavorite(series)" *ngIf="!isFavorite">
           <span class="material-symbols-outlined"> add </span>
+        </button>
+        <button class="delete" (click)="deleteFavorite()" *ngIf="isFavorite">
+          <span class="material-symbols-outlined"> done </span>
         </button>
       </div>
       <div class="tagline">

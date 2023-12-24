@@ -13,14 +13,16 @@ import { FavoriteService } from '../../services/favorite.service';
   styleUrl: './series-details.component.scss',
 })
 export class SeriesDetailsComponent {
-  series?: ResponseSeriesId;
+  series!: ResponseSeriesId;
   similar: Series[] = [];
   opacityValue: number = 1;
   video!: Video[];
   trailerKey!: string;
   loading: boolean = true;
-  movieId!:number
-  mediaType:string = 'tv'
+  movieId!: number;
+  mediaType: string = 'tv';
+  isFavorite!: boolean;
+  idFavoriteMovieServer!: number[];
 
   constructor(
     private ss: SeriesService,
@@ -32,11 +34,22 @@ export class SeriesDetailsComponent {
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       const id = params.get('id');
-      this.movieId = Number(id)
+      this.movieId = Number(id);
 
       if (id) {
         this.ss.getSeriesById(Number(id)).subscribe((data) => {
           this.series = data;
+          this.fs.isMovieFavorite(this.series).subscribe((response) => {
+            this.isFavorite = response;
+            if (response) {
+              this.fs
+                .getIdFavoriteServer(this.series)
+                .subscribe((idFavorite) => {
+                  this.idFavoriteMovieServer = idFavorite;
+                  console.log(this.idFavoriteMovieServer);
+                });
+            }
+          });
         });
         this.ss.getSimilarById(Number(id)).subscribe((serie) => {
           this.similar = serie.results;
@@ -95,7 +108,15 @@ export class SeriesDetailsComponent {
     this.router.navigate(['/video', this.trailerKey]);
   }
 
-  addFavorite(movie: ResponseMovieId | ResponseSeriesId){
-    this.fs.addFavorite(this.movieId, movie, this.mediaType).subscribe(movie=> console.log("add"))
+  addFavorite(movie: ResponseMovieId | ResponseSeriesId) {
+    this.fs
+      .addFavorite(this.movieId, movie, this.mediaType)
+      .subscribe((movie) => console.log('add'));
+    this.isFavorite = !this.isFavorite;
+  }
+
+  deleteFavorite() {
+    this.fs.deleteFavorite(this.idFavoriteMovieServer[0]).subscribe(movie => console.log('delete'))
+    this.isFavorite = !this.isFavorite
   }
 }

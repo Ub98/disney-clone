@@ -103,6 +103,25 @@
             }
           }
         }
+        &.delete {
+          border: 2px solid #f9f9f9;
+          height: 2.75rem;
+          width: 2.75rem;
+          align-items: center;
+          border-radius: 100%;
+          cursor: pointer;
+          display: flex;
+          flex-shrink: 0;
+          justify-content: center;
+          transition: all 0.2s ease-in-out;
+          background-color: #00000099;
+          span {
+            color: #0058E1;
+          }
+          &:hover {
+            background-color: #f9f9f9;
+          }
+        }
         span {
           font-size: 2em;
         }

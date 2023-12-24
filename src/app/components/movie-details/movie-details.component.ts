@@ -14,14 +14,16 @@ import { ResponseSeriesId } from '../../models/series';
   styleUrl: './movie-details.component.scss',
 })
 export class MovieDetailsComponent {
-  movie?: ResponseMovieId;
+  movie!: ResponseMovieId;
   similar: Movie[] = [];
   opacityValue: number = 1;
   video!: Video[];
   trailerKey!: string;
-  loading: boolean = true
-  movieId!: number
-  mediaType:string = 'movie'
+  loading: boolean = true;
+  movieId!: number;
+  mediaType: string = 'movie';
+  isFavorite!: boolean;
+  idFavoriteMovieServer!: number[];
 
   constructor(
     private ms: MovieService,
@@ -31,17 +33,27 @@ export class MovieDetailsComponent {
     private fs: FavoriteService
   ) {}
   ngOnInit(): void {
-
     this.route.paramMap.subscribe((params) => {
       const id = params.get('id');
-      this.movieId = Number(id)
+      this.movieId = Number(id);
       if (id) {
         this.ms.getMovieById(Number(id)).subscribe((data) => {
           this.movie = data;
+          this.fs.isMovieFavorite(this.movie).subscribe((response) => {
+            this.isFavorite = response;
+            if (response) {
+              this.fs
+                .getIdFavoriteServer(this.movie)
+                .subscribe((idFavorite) => {
+                  this.idFavoriteMovieServer = idFavorite;
+                  console.log(this.idFavoriteMovieServer);
+                });
+            }
+          });
         });
         this.ms.getSimilarById(Number(id)).subscribe((movie) => {
           this.similar = movie.results;
-          this.loading = false
+          this.loading = false;
         });
         this.vs.getVideoMovie(Number(id)).subscribe((video) => {
           this.video = video.results;
@@ -104,8 +116,16 @@ export class MovieDetailsComponent {
     this.router.navigate(['/video', this.trailerKey]);
   }
 
-  addFavorite(movie: ResponseMovieId | ResponseSeriesId){
-    this.fs.addFavorite(this.movieId, movie, this.mediaType).subscribe(movie=> console.log("add")
-    )
+  addFavorite(movie: ResponseMovieId | ResponseSeriesId) {
+    this.fs
+      .addFavorite(this.movieId, movie, this.mediaType)
+      .subscribe((movie) => console.log('add'));
+
+    this.isFavorite = !this.isFavorite;
+  }
+
+  deleteFavorite() {
+    this.fs.deleteFavorite(this.idFavoriteMovieServer[0]).subscribe((movie) => console.log('delete'));
+    this.isFavorite = !this.isFavorite;
   }
 }

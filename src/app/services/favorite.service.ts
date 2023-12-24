@@ -67,13 +67,9 @@ export class FavoriteService {
     movie: ResponseMovieId | ResponseSeriesId,
     mediaType: string
   ): Observable<Favorite | undefined> {
-    if (!this.authService.isUserLogged) {
-      return of(undefined);
-    }
-
     const userId = this.authService.getLoggedUser()!.user.id;
 
-    return this.isMovieFavorite(userId.toString(), movie).pipe(
+    return this.isMovieFavorite(movie).pipe(
       switchMap((isFavorite) => {
         if (isFavorite) {
           return of(undefined);
@@ -98,9 +94,10 @@ export class FavoriteService {
   }
 
   isMovieFavorite(
-    userId: string,
     movie: ResponseMovieId | ResponseSeriesId
   ): Observable<boolean> {
+    const userId = this.authService.getLoggedUser()!.user.id;
+
     const httpOptions = {
       headers: new HttpHeaders({
         Authorization:
@@ -116,23 +113,58 @@ export class FavoriteService {
       .pipe(map((favorites) => favorites.length > 0));
   }
 
-  getFavorite(): Observable<Favorite[]> {
-    if (this.authService.isUserLogged) {
-      const userId = this.authService.getLoggedUser()!.user.id;
+  getIdFavoriteServer( movie: ResponseMovieId | ResponseSeriesId):Observable<number[]>{
+    const userId = this.authService.getLoggedUser()!.user.id;
 
-      const httpOptions = {
-        headers: new HttpHeaders({
-          Authorization:
-            'Bearer ' + this.authService.getLoggedUser()!.accessToken,
-        }),
-      };
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization:
+          'Bearer ' + this.authService.getLoggedUser()?.accessToken,
+      }),
+    };
 
-      return this.http.get<Favorite[]>(
-        `${environment.JSON_SERVER_BASE_URL}/favorite?userId=${userId}`,
+    return this.http
+      .get<Favorite[]>(
+        `${environment.JSON_SERVER_BASE_URL}/favorite?userId=${userId}&movieId=${movie.id}`,
         httpOptions
-      );
-    } else {
-      return of([]);
-    }
+      )
+      // .pipe(map((favorites) => favorites.id); con observable non di tipo [] mi ritorna undefined, perchè?
+      .pipe(map((favorites) => favorites.map(favorite => favorite.id)));
+  }
+
+  getFavorite(): Observable<Favorite[]> {
+    const userId = this.authService.getLoggedUser()!.user.id;
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization:
+          'Bearer ' + this.authService.getLoggedUser()!.accessToken,
+      }),
+    };
+
+    return this.http.get<Favorite[]>(
+      `${environment.JSON_SERVER_BASE_URL}/favorite?userId=${userId}`,
+      httpOptions
+    );
+  }
+
+  //risolvi error 404
+  //la delete funziona solo tramite id, ottengo id dal json e lo passo alla delete
+  deleteFavorite(
+   id: number
+  ): Observable<any> {
+    const userId = this.authService.getLoggedUser()!.user.id;
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization:
+          'Bearer ' + this.authService.getLoggedUser()?.accessToken,
+      }),
+    };
+
+    return this.http.delete<any>(
+      `${environment.JSON_SERVER_BASE_URL}/favorite/${id}`,
+      httpOptions
+    );
   }
 }
