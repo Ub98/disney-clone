@@ -62,16 +62,19 @@ export class SliderMovieComponent implements OnInit {
         },
       },
       {
-        breakpoint: 768,
+        breakpoint: 769,
         settings: {
           slidesToShow: 3,
           initialSlide: 1,
+          centerPadding: 'calc(3.5vw + 14px) 30px ',
         },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 2,
+          initialSlide: 1,
+          centerPadding: 'calc(3.5vw + 14px) 20px ',
         },
       },
     ],

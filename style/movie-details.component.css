@@ -25,7 +25,7 @@
 }
 .wrap ::ng-deep .detail article h1 {
   max-width: 50%;
-  font-size: 3.5vw;
+  font-size: 4em;
   padding-bottom: 0.3em;
 }
 .wrap ::ng-deep .detail article .genres {
@@ -38,11 +38,12 @@
   align-items: center;
   display: flex;
   flex-flow: wrap;
-  margin-top: 32px;
+  margin-top: 22px;
   min-height: 56px;
   padding-bottom: 1em;
 }
 .wrap ::ng-deep .detail .contain-btn button {
+  margin-top: 10px;
   display: flex;
   align-items: center;
   display: flex;
@@ -117,7 +118,7 @@
   background-color: rgba(0, 0, 0, 0.6);
 }
 .wrap ::ng-deep .detail .contain-btn button.delete span {
-  color: #0058E1;
+  color: #0058e1;
 }
 .wrap ::ng-deep .detail .contain-btn button.delete:hover {
   background-color: #f9f9f9;
@@ -277,4 +278,50 @@
 .wrap ::ng-deep .detail mat-tab-group .wrap-article article p span {
   font-size: 0.7em;
   color: #cacaca;
+}
+
+@media screen and (max-width: 768px) {
+  .wrap .detail {
+    padding: 100px calc(3.5vw + 24px) 0 calc(3.5vw + 24px);
+  }
+  .wrap .detail h1 {
+    font-size: 3em;
+    max-width: 100%;
+  }
+  .wrap .detail .wrap-article {
+    flex-direction: column;
+  }
+  .wrap .detail .wrap-article article {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 428px) {
+  .wrap .detail {
+    padding: 50px calc(3.5vw + 24px) 0 calc(3.5vw + 24px);
+  }
+  .wrap .detail h1 {
+    font-size: 1.5em;
+  }
+  .wrap .detail .tagline p {
+    font-size: 1.3em;
+  }
+  .wrap .detail .production {
+    flex-direction: column;
+  }
+  .wrap .detail .production p {
+    width: 100%;
+    font-size: 1em;
+  }
+  .wrap .detail .wrap-article {
+    flex-direction: column;
+  }
+  .wrap .detail .wrap-article article {
+    width: 100%;
+  }
+  .wrap .detail .wrap-article article h2 {
+    font-size: 1.5em;
+  }
+  .wrap .detail .wrap-article article p {
+    font-size: 1em;
+  }
 }

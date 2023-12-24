@@ -24,6 +24,7 @@
   }
   h3 {
     font-size: 1.5em;
+    text-align: center;
     color: #cacaca;
   }
   .contain-btn {
@@ -35,4 +36,25 @@
       font-size: 1.3em;
     }
   }
+}
+
+
+@media screen and (max-width: 428px) {
+.container{
+  h1{
+    font-size: 2em;
+  }
+  h2{
+    font-size: 1em;
+  }
+  .contain-btn{
+    width: 100%;
+    flex-direction: column;
+    margin-bottom: 1em;
+    button{
+      width: 100%;
+      margin: .5em;
+    }
+  }
+}
 }

@@ -1,66 +1,27 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { Search } from '../models/search';
-import { Observable, map, of, switchMap } from 'rxjs';
+import { Observable, catchError, map, of, switchMap } from 'rxjs';
 import { Favorite, FavoriteDto } from '../models/favorite';
 import { environment } from '../../environments/environment';
 import { ResponseMovieId } from '../models/movie';
 import { ResponseSeriesId } from '../models/series';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FavoriteService {
-  constructor(private http: HttpClient, private authService: AuthService) {}
-
-  // addFavorite(
-  //   movieId: number,
-  //   movie: ResponseMovieId | ResponseSeriesId
-  // ): Observable<Favorite | undefined> {
-  //   if (this.authService.isUserLogged) {
-  //     let model = new FavoriteDto(
-  //       this.authService.getLoggedUser()!.user.id,
-  //       movie,
-  //       movieId
-  //     );
-
-  //     const httpOptions = {
-  //       headers: new HttpHeaders({
-  //         Authorization:
-  //           'Bearer ' + this.authService.getLoggedUser()?.accessToken,
-  //       }),
-  //     };
-
-  //     return this.http.post<Favorite>(
-  //       `${environment.JSON_SERVER_BASE_URL}/favorite`,
-  //       model,
-  //       httpOptions
-  //     );
-  //   } else {
-  //     return of(undefined);
-  //   }
-  // }
-
-  // getFavorite(): Observable<Favorite[]> {
-  //   if (this.authService.isUserLogged) {
-  //     const httpOptions = {
-  //       headers: new HttpHeaders({
-  //         Authorization:
-  //           'Bearer ' + this.authService.getLoggedUser()!.accessToken,
-  //       }),
-  //     };
-
-  //     return this.http.get<Favorite[]>(
-  //       `${environment.JSON_SERVER_BASE_URL}/favorite?userId=${
-  //         this.authService.getLoggedUser()?.user.id
-  //       }`,
-  //       httpOptions
-  //     );
-  //   } else {
-  //     return of([]);
-  //   }
-  // }
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   addFavorite(
     movieId: number,
@@ -70,6 +31,7 @@ export class FavoriteService {
     const userId = this.authService.getLoggedUser()!.user.id;
 
     return this.isMovieFavorite(movie).pipe(
+      //dopo implementazione delete, puoi farne anche a meno del controllo
       switchMap((isFavorite) => {
         if (isFavorite) {
           return of(undefined);
@@ -83,11 +45,23 @@ export class FavoriteService {
             }),
           };
 
-          return this.http.post<Favorite>(
-            `${environment.JSON_SERVER_BASE_URL}/favorite`,
-            model,
-            httpOptions
-          );
+          return this.http
+            .post<Favorite>(
+              `${environment.JSON_SERVER_BASE_URL}/favorite`,
+              model,
+              httpOptions
+            )
+            .pipe(
+              catchError((err: HttpErrorResponse):Observable<Favorite | undefined> => {
+                if (err.error == 'jwt expired') {
+                  this.authService.logOut()
+                  this.router.navigate(['/jwt-expired']);
+                  return of(undefined);
+                }else{
+                  return of(undefined);
+                }
+              })
+            );
         }
       })
     );
@@ -113,7 +87,9 @@ export class FavoriteService {
       .pipe(map((favorites) => favorites.length > 0));
   }
 
-  getIdFavoriteServer( movie: ResponseMovieId | ResponseSeriesId):Observable<number[]>{
+  getIdFavoriteServer(
+    movie: ResponseMovieId | ResponseSeriesId
+  ): Observable<number[]> {
     const userId = this.authService.getLoggedUser()!.user.id;
 
     const httpOptions = {
@@ -123,13 +99,15 @@ export class FavoriteService {
       }),
     };
 
-    return this.http
-      .get<Favorite[]>(
-        `${environment.JSON_SERVER_BASE_URL}/favorite?userId=${userId}&movieId=${movie.id}`,
-        httpOptions
-      )
-      // .pipe(map((favorites) => favorites.id); con observable non di tipo [] mi ritorna undefined, perchè?
-      .pipe(map((favorites) => favorites.map(favorite => favorite.id)));
+    return (
+      this.http
+        .get<Favorite[]>(
+          `${environment.JSON_SERVER_BASE_URL}/favorite?userId=${userId}&movieId=${movie.id}`,
+          httpOptions
+        )
+        // .pipe(map((favorites) => favorites.id); con observable non di tipo [] mi ritorna undefined, perchè?
+        .pipe(map((favorites) => favorites.map((favorite) => favorite.id)))
+    );
   }
 
   getFavorite(): Observable<Favorite[]> {
@@ -150,9 +128,7 @@ export class FavoriteService {
 
   //risolvi error 404
   //la delete funziona solo tramite id, ottengo id dal json e lo passo alla delete
-  deleteFavorite(
-   id: number
-  ): Observable<any> {
+  deleteFavorite(id: number): Observable<any> {
     const userId = this.authService.getLoggedUser()!.user.id;
 
     const httpOptions = {

@@ -101,7 +101,13 @@ nav div.contain-user button img {
   }
 }
 @media screen and (max-width: 450px) {
+  nav {
+    padding: 0 20px;
+  }
   nav ul li:nth-child(5), nav ul li:nth-child(6) {
+    display: none;
+  }
+  nav .contain-user p {
     display: none;
   }
 }

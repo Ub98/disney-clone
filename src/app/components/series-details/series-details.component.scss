@@ -26,7 +26,7 @@
       font-size: 14px;
       h1 {
         max-width: 50%;
-        font-size: 3.5vw;
+        font-size: 4em;
         padding-bottom: 0.3em;
       }
       .genres {
@@ -40,10 +40,11 @@
       align-items: center;
       display: flex;
       flex-flow: wrap;
-      margin-top: 32px;
+      margin-top: 22px;
       min-height: 56px;
       padding-bottom: 1em;
       button {
+        margin-top: 10px;
         display: flex;
         align-items: center;
         display: flex;
@@ -116,7 +117,7 @@
           transition: all 0.2s ease-in-out;
           background-color: #00000099;
           span {
-            color: #0058E1;
+            color: #0058e1;
           }
           &:hover {
             background-color: #f9f9f9;
@@ -201,8 +202,7 @@
           display: flex;
           min-height: 480px;
           .card-img {
-            width: 315px;
-            height: 470px;
+            max-width: 315px;
             img {
               border-radius: 4px;
               width: 100%;
@@ -270,7 +270,6 @@
           width: 100%;
           margin: 0;
           .slick-slide {
-            // width: 260px !important;
             padding: 10px;
             cursor: pointer;
             img {
@@ -316,7 +315,7 @@
             font-size: 2em;
             margin-bottom: 10px;
           }
-          .overview{
+          .overview {
             color: #cacaca;
           }
           p {
@@ -330,6 +329,68 @@
               color: #cacaca;
             }
           }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .wrap {
+    .detail {
+      padding: 100px calc(3.5vw + 24px) 0 calc(3.5vw + 24px);
+      h1 {
+        max-width: 100%;
+        font-size: 3em;
+      }
+      .wrap-article {
+        flex-direction: column;
+        article {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .wrap {
+    .detail {
+      padding: 50px calc(3.5vw + 24px) 0 calc(3.5vw + 24px);
+      h1 {
+        font-size: 1.5em;
+      }
+      .tagline {
+        p {
+          font-size: 1.3em;
+        }
+      }
+      .production {
+        flex-direction: column;
+        p {
+          width: 100%;
+          font-size: 1em;
+        }
+      }
+      .wrap-article {
+        flex-direction: column;
+        article {
+          width: 100%;
+          h2 {
+            font-size: 1.5em;
+          }
+          p {
+            font-size: 1em;
+          }
+        }
+      }
+      .episodi{
+        .episodi-card{
+          flex-direction: column;
+        }
+        article{
+          padding-left: 10px;
+          padding-top: 5px;
         }
       }
     }

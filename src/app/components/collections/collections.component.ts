@@ -58,7 +58,7 @@ export class CollectionsComponent implements OnInit {
         },
       },
       {
-        breakpoint: 768,
+        breakpoint: 769,
         settings: {
           slidesToShow: 3,
           initialSlide: 1,

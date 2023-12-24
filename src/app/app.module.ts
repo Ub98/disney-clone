@@ -35,6 +35,7 @@ import { EnterPasswordComponent } from './components/enter-password/enter-passwo
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
+import { JwtExpiredComponent } from './components/jwt-expired/jwt-expired.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import {MatIconModule} from '@angular/material/icon';
     RegisterComponent,
     EnterEmailComponent,
     EnterPasswordComponent,
+    JwtExpiredComponent,
   ],
   imports: [
     BrowserModule,

@@ -10,12 +10,14 @@ import { Favorite } from '../../models/favorite';
   styleUrl: './my-list.component.scss',
 })
 export class MyListComponent implements OnInit {
-  favorites: Favorite[] = []
+  favorites: Favorite[] = [];
+  loading: boolean = true;
 
   constructor(private fs: FavoriteService) {}
   ngOnInit(): void {
     this.fs.getFavorite().subscribe((movie) => {
-      this.favorites = movie            
+      this.favorites = movie;
+      this.loading = false;
     });
   }
 }

@@ -59,10 +59,12 @@
 @media screen and (max-width: 768px) {
   .body .container {
     grid-template-columns: repeat(3, 1fr);
+    gap: 1.5em 1em;
   }
 }
 @media screen and (max-width: 428px) {
   .body .container {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.5em 1em;
   }
 }

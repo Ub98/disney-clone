@@ -25,6 +25,7 @@
 }
 .container h3 {
   font-size: 1.5em;
+  text-align: center;
   color: #cacaca;
 }
 .container .contain-btn {
@@ -35,4 +36,22 @@
   margin: 1em 0.5em;
   height: 50px;
   font-size: 1.3em;
+}
+
+@media screen and (max-width: 428px) {
+  .container h1 {
+    font-size: 2em;
+  }
+  .container h2 {
+    font-size: 1em;
+  }
+  .container .contain-btn {
+    width: 100%;
+    flex-direction: column;
+    margin-bottom: 1em;
+  }
+  .container .contain-btn button {
+    width: 100%;
+    margin: 0.5em;
+  }
 }

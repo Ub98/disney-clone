@@ -113,12 +113,18 @@ nav {
 
 @media screen and (max-width: 450px) {
   nav {
+    padding: 0 20px;
     ul {
       li {
         &:nth-child(5),
         &:nth-child(6) {
           display: none;
         }
+      }
+    }
+    .contain-user{
+      p{
+        display: none;
       }
     }
   }

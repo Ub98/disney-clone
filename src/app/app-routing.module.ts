@@ -17,6 +17,7 @@ import { EnterEmailComponent } from './components/enter-email/enter-email.compon
 import { EnterPasswordComponent } from './components/enter-password/enter-password.component';
 import { authGuard } from './guards/auth.guard';
 import { isLoggedGuard } from './guards/is-logged.guard';
+import { JwtExpiredComponent } from './components/jwt-expired/jwt-expired.component';
 
 const routes: Routes = [
   { path: 'home-page', component: StartComponent, canActivate:[isLoggedGuard] },
@@ -55,6 +56,7 @@ const routes: Routes = [
     component: CollectionsComponent,
     canActivate: [authGuard],
   },
+  {path:'jwt-expired', component:JwtExpiredComponent},
   { path: '', redirectTo: 'home-page', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
 ];

@@ -15,7 +15,7 @@
   inset: 0px;
 }
 .wrap ::ng-deep .detail {
-  padding-top: 550px;
+  padding-top: 40%;
   position: relative;
   z-index: 2;
 }
