@@ -50,12 +50,11 @@
     <button
       mat-icon-button
       [matMenuTriggerFor]="menu"
-      aria-label="Example icon-button with a menu"
     >
       <img src="../../assets/images/io-p.png" alt="" />
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>
+      <button mat-menu-item (click)="goToAccount()">
         <span>Account</span>
       </button>
       <button mat-menu-item (click)="logOut()">

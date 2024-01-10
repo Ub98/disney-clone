@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment';
 export class AuthService {
   email!: string;
 
-  emailChange(email: string) {
+  setEmail(email: string) {
     this.email = email;
   }
 

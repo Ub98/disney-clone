@@ -1,0 +1,72 @@
+.body {
+  padding: calc(3.5vw + 24px) 0 calc(3.5vw + 24px);
+  display: flex;
+  justify-content: center;
+  background-image: linear-gradient(to bottom, #0e080c, #1a1d29 15%);
+  min-height: 100vh;
+  .contain {
+    margin: 92px auto;
+    min-width: 506px;
+    min-height: calc(100vh - 460px);
+    position: relative;
+    h2 {
+      font-size: 32px;
+      letter-spacing: 0.11px;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .account-section {
+      border-radius: 4px;
+      border: 1px solid rgb(49, 52, 62);
+      border-bottom: 1px solid rgb(49, 52, 62);
+      display: flex;
+      flex-flow: column;
+      margin-bottom: 32px;
+      & > :not(:first-child) {
+        border-top: 1px solid rgb(49, 52, 62);
+      }
+      .header {
+        background-color: #31343e;
+        padding: 0.25rem 1rem;
+        p {
+          color: #a8a9ad;
+          font-size: 15px;
+          letter-spacing: -0.1px;
+          line-height: 1.6;
+        }
+      }
+      .content {
+        min-height: 56px;
+        padding: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        p {
+          width: 100%;
+          color: #f9f9f9;
+        }
+        button {
+          font-family: "ArrowIcon";
+          border: none;
+          background: white;
+          border-radius: 50%;
+          width: 25px;
+          height: 25px;
+          cursor: pointer;
+          &:before {
+            content: "\E804";
+          }
+        }
+      }
+      .log-out {
+        a {
+          color: #67bdff;
+          cursor: pointer;
+          &:hover {
+            color: #0682f0;
+          }
+        }
+      }
+    }
+  }
+}

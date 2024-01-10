@@ -1,0 +1,20 @@
+<div class="body">
+  <div class="contain">
+    <h2>Account</h2>
+    <div class="account-section">
+      <div class="header">
+        <p>Dati Account</p>
+      </div>
+      <div class="content">
+        <p>{{ authService.getLoggedUser()!.user.email }}</p>
+      </div>
+      <div class="content">
+        <p>Password: ********</p>
+        <button></button>
+      </div>
+      <div class="content log-out">
+        <a (click)="logOut()">Disconnetti</a>
+      </div>
+    </div>
+  </div>
+</div>

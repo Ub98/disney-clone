@@ -18,6 +18,7 @@ import { EnterPasswordComponent } from './components/enter-password/enter-passwo
 import { authGuard } from './guards/auth.guard';
 import { isLoggedGuard } from './guards/is-logged.guard';
 import { JwtExpiredComponent } from './components/jwt-expired/jwt-expired.component';
+import { AccountComponent } from './components/account/account.component';
 
 const routes: Routes = [
   { path: 'home-page', component: StartComponent, canActivate:[isLoggedGuard] },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'my-list', component: MyListComponent, canActivate: [authGuard] },
   { path: 'movies', component: MovieComponent, canActivate: [authGuard] },
   { path: 'series', component: SeriesComponent, canActivate: [authGuard] },
+  { path: 'account', component: AccountComponent, canActivate: [authGuard] },
   {
     path: 'movie-details/:id',
     component: MovieDetailsComponent,
