@@ -45,7 +45,7 @@
       mat-align-tabs="start"
       animationDuration="0ms"
     >
-      <mat-tab label="EPISODI">
+      <mat-tab label="EPISODI" *ngIf="series.seasons.length">
         <div class="episodi">
           <mat-tab-group animationDuration="0ms">
             <mat-tab
@@ -78,7 +78,7 @@
           </mat-tab-group>
         </div>
       </mat-tab>
-      <mat-tab label="CONSIGLIATI">
+      <mat-tab label="CONSIGLIATI" *ngIf="similar.length">
         <ngx-slick-carousel [config]="slideConfig">
           <ng-container *ngFor="let series of similar">
             <div ngxSlickItem class="slide" *ngIf="series.backdrop_path">
@@ -94,7 +94,7 @@
           </ng-container>
         </ngx-slick-carousel>
       </mat-tab>
-      <mat-tab label="EXTRA">
+      <mat-tab label="EXTRA" *ngIf="series.production_countries.length">
         <div class="production">
           <p>
             Prodotto in:
@@ -110,7 +110,7 @@
           </p>
         </div>
       </mat-tab>
-      <mat-tab label="DETTAGLI">
+      <mat-tab label="DETTAGLI" *ngIf="series.overview">
         <div class="wrap-article">
           <article>
             <h2>{{ series.name }}</h2>
