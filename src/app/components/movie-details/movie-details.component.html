@@ -11,7 +11,7 @@
     <article>
       <h1>{{ movie.title }}</h1>
       <div class="release">
-        <p>{{ movie.release_date }}</p>
+        <p>{{ movie.release_date | date: 'dd-MM-yyyy'}}</p>
       </div>
       <div class="genres">
         <p *ngFor="let genre of movie.genres; let last = last">
@@ -87,7 +87,7 @@
           </article>
           <article>
             <p>
-              Data di uscita: <span>{{ movie.release_date }}</span>
+              Data di uscita: <span>{{ movie.release_date | date: 'dd-MM-yyyy'}}</span>
             </p>
             <p>
               Genere:

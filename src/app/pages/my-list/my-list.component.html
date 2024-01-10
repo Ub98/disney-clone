@@ -4,9 +4,9 @@
      <h2>La tua lista</h2>
      <h4>I tuoi film e serie</h4>
      <div class="container">
-       <ng-container *ngFor="let favorite of favorites; let index = index">
+       <ng-container *ngFor="let favorite of favorites">
          <div class="card" *ngIf="favorite.movie.backdrop_path">
-           <a [routerLink]="favorites[index].mediaType == 'tv' ? ['/series-details', favorite.movie.id] : ['/movie-details', favorite.movie.id]">
+           <a [routerLink]="favorite.mediaType == 'tv' ? ['/series-details', favorite.movie.id] : ['/movie-details', favorite.movie.id]">
              <img
                [src]="'https://image.tmdb.org/t/p/w400' + favorite.movie.backdrop_path"
              />

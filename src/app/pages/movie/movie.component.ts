@@ -3,7 +3,6 @@ import { GenreService } from '../../services/genre.service';
 import { Genre } from '../../models/genres';
 import { Movie } from '../../models/movie';
 import { MovieService } from '../../services/movie.service';
-import { LoaderService } from '../../services/loader.service';
 
 @Component({
   selector: 'app-movie',
@@ -20,7 +19,6 @@ export class MovieComponent implements OnInit {
   constructor(
     private gs: GenreService,
     private ms: MovieService,
-    private loader: LoaderService
   ) {}
 
   ngOnInit(): void {

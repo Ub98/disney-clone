@@ -11,7 +11,7 @@
     <article>
       <h1>{{ series.name }}</h1>
       <div class="release">
-        <p>{{ series.last_air_date }}</p>
+        <p>{{ series.last_air_date | date: 'dd-MM-yyyy' }}</p>
       </div>
       <div class="genres">
         <p *ngFor="let genre of series.genres; let last = last">
@@ -64,7 +64,7 @@
                 </div>
                 <article>
                   <p *ngIf="seasons.air_date">
-                    Data: <span>{{ seasons.air_date }}</span>
+                    Data: <span>{{ seasons.air_date | date: 'dd-MM-yyyy' }}</span>
                   </p>
                   <p *ngIf="seasons.episode_count">
                     Episodi: <span>{{ seasons.episode_count }}</span>
@@ -120,7 +120,7 @@
           </article>
           <article>
             <p>
-              Data di uscita: <span>{{ series.last_air_date }}</span>
+              Data di uscita: <span>{{ series.last_air_date | date: 'dd-MM-yyyy'}}</span>
             </p>
             <p>
               Genere:

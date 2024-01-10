@@ -46,7 +46,6 @@ export class MovieDetailsComponent {
                 .getIdFavoriteServer(this.movie)
                 .subscribe((idFavorite) => {
                   this.idFavoriteMovieServer = idFavorite;
-                  console.log(this.idFavoriteMovieServer);
                 });
             }
           });
@@ -119,13 +118,13 @@ export class MovieDetailsComponent {
   addFavorite(movie: ResponseMovieId | ResponseSeriesId) {
     this.fs
       .addFavorite(this.movieId, movie, this.mediaType)
-      .subscribe((movie) => console.log('add'));
+      .subscribe();
 
     this.isFavorite = !this.isFavorite;
   }
 
   deleteFavorite() {
-    this.fs.deleteFavorite(this.idFavoriteMovieServer[0]).subscribe((movie) => console.log('delete'));
+    this.fs.deleteFavorite(this.idFavoriteMovieServer[0]).subscribe();
     this.isFavorite = !this.isFavorite;
   }
 }

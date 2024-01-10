@@ -19,6 +19,7 @@ div.container{
             transform: scale(1.1);
             border-radius: 13px;
             border: 3px solid white;
+            z-index: 3;
             video{
                 opacity: 1;
             }
