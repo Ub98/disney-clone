@@ -1,5 +1,5 @@
 .body {
-  padding: calc(3.5vw + 24px) 0 calc(3.5vw + 24px);
+  padding: calc(3.5vw + 24px);
   display: flex;
   justify-content: center;
   background-image: linear-gradient(to bottom, #0e080c, #1a1d29 15%);
@@ -67,6 +67,15 @@
           }
         }
       }
+    }
+  }
+}
+
+
+@media screen and (max-width: 450px) {
+  .body{
+    .contain{
+      min-width: 100%;
     }
   }
 }

@@ -1,6 +1,11 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LoggedUser, LoginDto, RegisterDto } from '../models/auth';
+import {
+  LoggedUser,
+  LoginDto,
+  RegisterDto,
+  UserChangePassword,
+} from '../models/auth';
 import { Observable, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
 
@@ -52,5 +57,25 @@ export class AuthService {
 
   logOut() {
     localStorage.removeItem('user');
+  }
+
+  changePassword(password: string): Observable<UserChangePassword> {
+    const userId = this.getLoggedUser()!.user.id;
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.getLoggedUser()!.accessToken,
+      }),
+    };
+
+    return this.http.put<UserChangePassword>(
+      `${environment.JSON_SERVER_BASE_URL}/users/${userId}`,
+      {
+        email: this.getLoggedUser()!.user.email,
+        password: password,
+        name: this.getLoggedUser()!.user.name,
+      },
+      httpOptions
+    );
   }
 }

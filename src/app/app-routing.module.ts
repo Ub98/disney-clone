@@ -19,6 +19,7 @@ import { authGuard } from './guards/auth.guard';
 import { isLoggedGuard } from './guards/is-logged.guard';
 import { JwtExpiredComponent } from './components/jwt-expired/jwt-expired.component';
 import { AccountComponent } from './components/account/account.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 
 const routes: Routes = [
   { path: 'home-page', component: StartComponent, canActivate:[isLoggedGuard] },
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'movies', component: MovieComponent, canActivate: [authGuard] },
   { path: 'series', component: SeriesComponent, canActivate: [authGuard] },
   { path: 'account', component: AccountComponent, canActivate: [authGuard] },
+  { path: 'change-password', component: ChangePasswordComponent},
   {
     path: 'movie-details/:id',
     component: MovieDetailsComponent,

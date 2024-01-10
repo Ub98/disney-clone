@@ -6,13 +6,9 @@ export class RegisterDto {
   ) {}
 }
 
-//prettier-ignore
 export class LoginDto {
-    constructor(
-      public email: string = '', 
-      public password: string = ''
-      ) {}
-  }
+  constructor(public email: string = '', public password: string = '') {}
+}
 
 export type User = {
   id: number;
@@ -23,4 +19,11 @@ export type User = {
 export type LoggedUser = {
   accessToken: string;
   user: User;
+};
+
+export type UserChangePassword = {
+  id: number;
+  name: string;
+  email: string;
+  password: string;
 };
