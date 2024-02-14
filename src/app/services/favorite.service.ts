@@ -126,8 +126,6 @@ export class FavoriteService {
     );
   }
 
-  //risolvi error 404
-  //la delete funziona solo tramite id, ottengo id dal json e lo passo alla delete
   deleteFavorite(id: number): Observable<any> {
     const userId = this.authService.getLoggedUser()!.user.id;
 

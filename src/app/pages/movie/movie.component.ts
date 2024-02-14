@@ -25,6 +25,8 @@ export class MovieComponent implements OnInit {
     this.gs.getGenreMovie().subscribe((genre) => {
       this.genres = genre.genres;
     });
+    
+    this.genreValue = ""
 
     this.getMovie();
   }

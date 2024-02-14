@@ -22,6 +22,8 @@ export class SeriesComponent {
       this.genres = genre.genres;
     });
 
+    this.genreValue = ""
+    
     this.getSerie();
   }
 

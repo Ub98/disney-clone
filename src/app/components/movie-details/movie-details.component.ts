@@ -5,7 +5,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { VideoService } from '../../services/video.service';
 import { Video } from '../../models/video';
 import { FavoriteService } from '../../services/favorite.service';
-import { Search } from '../../models/search';
 import { ResponseSeriesId } from '../../models/series';
 
 @Component({

@@ -11,7 +11,267 @@
       "password": "$2a$10$QiI1XdjvbfUZJrYIOuy3D.YVUMjjP6kK3nL6zYAleWBqOzCeTc8Uu",
       "name": "ufo",
       "id": 2
+    },
+    {
+      "email": "test3@test.com",
+      "password": "$2a$10$PQMnQ83lrzJxqSK4mb2SHu0tNjE5sVsaGq2GjhtSEvflYlqn8KEE.",
+      "name": "Ubaldo",
+      "id": 3
+    },
+    {
+      "email": "test4@test.com",
+      "password": "$2a$10$cd2xmdzNh7IMAxDHgLQpMesJoqmYCcAyBPqnNCjshRYS4W9Vr7EZa",
+      "name": "ubaldo",
+      "id": 4
     }
   ],
-  "favorite": []
+  "favorite": [
+    {
+      "userId": 3,
+      "movie": {
+        "adult": false,
+        "backdrop_path": "/7PYAUaJzzUVxS4xiJHFe338vJd1.jpg",
+        "created_by": [
+          {
+            "id": 168798,
+            "credit_id": "5a176eba0e0a264cc10088f6",
+            "name": "Josh Schwartz",
+            "gender": 2,
+            "profile_path": "/lIe4rE89dzhYbc3dZJcdXpjwoSR.jpg"
+          },
+          {
+            "id": 168812,
+            "credit_id": "5a176ec3925141032400885e",
+            "name": "Stephanie Savage",
+            "gender": 1,
+            "profile_path": "/bWCBO6nDtYsUrPXZiFsqrMvtZgN.jpg"
+          }
+        ],
+        "episode_run_time": [
+          50
+        ],
+        "first_air_date": "2017-11-21",
+        "genres": [
+          {
+            "id": 10759,
+            "name": "Action & Adventure"
+          },
+          {
+            "id": 80,
+            "name": "Crime"
+          },
+          {
+            "id": 18,
+            "name": "Dramma"
+          },
+          {
+            "id": 10765,
+            "name": "Sci-Fi & Fantasy"
+          }
+        ],
+        "homepage": "https://www.hulu.com/marvels-runaways",
+        "id": 67466,
+        "in_production": false,
+        "languages": [
+          "en"
+        ],
+        "last_air_date": "2019-12-13",
+        "last_episode_to_air": {
+          "id": 1997096,
+          "name": "Evitare la forca",
+          "overview": "Due anni dopo aver sconfitto Morgana, dei visitatori del futuro, spediscono i ragazzi nel passato per prevenire il loro assassinio e per salvare un'amica che pensavano aver perso per sempre.",
+          "vote_average": 7.1,
+          "vote_count": 18,
+          "air_date": "2019-12-13",
+          "episode_number": 10,
+          "episode_type": "finale",
+          "production_code": "",
+          "runtime": 49,
+          "season_number": 3,
+          "show_id": 67466,
+          "still_path": "/7l9UUQvcNLsK2E6cFoqx1jtalL8.jpg"
+        },
+        "name": "Marvel's Runaways",
+        "next_episode_to_air": null,
+        "networks": [
+          {
+            "id": 453,
+            "logo_path": "/pqUTCleNUiTLAVlelGxUgWn1ELh.png",
+            "name": "Hulu",
+            "origin_country": "US"
+          }
+        ],
+        "number_of_episodes": 33,
+        "number_of_seasons": 3,
+        "origin_country": [
+          "US"
+        ],
+        "original_language": "en",
+        "original_name": "Marvel's Runaways",
+        "overview": "Marvel's Runaways, nota semplicemente come Runaways, è una serie televisiva statunitense creata da Josh Schwartz e Stephanie Savage per Hulu e basata sugli omonimi personaggi della Marvel Comics. La serie è ambientata all'interno del Marvel Cinematic Universe, in continuità con i film e le altre serie televisive del franchise.",
+        "popularity": 83.718,
+        "poster_path": "/zceMrfO17AQkeWJZNra4O90s1vE.jpg",
+        "production_companies": [
+          {
+            "id": 38679,
+            "logo_path": "/v2y3LuLxYtW36hvLa8IDGQk3Oql.png",
+            "name": "Marvel Television",
+            "origin_country": "US"
+          },
+          {
+            "id": 51718,
+            "logo_path": "/fS7xGI3Pm48AsvrjBMceyBoKr2c.png",
+            "name": "Fake Empire Productions",
+            "origin_country": "US"
+          },
+          {
+            "id": 76871,
+            "logo_path": "/9DTggoZARHzATCRewGRs9XSNOWP.png",
+            "name": "ABC Signature",
+            "origin_country": "US"
+          }
+        ],
+        "production_countries": [
+          {
+            "iso_3166_1": "US",
+            "name": "United States of America"
+          }
+        ],
+        "seasons": [
+          {
+            "air_date": "2017-11-21",
+            "episode_count": 10,
+            "id": 79336,
+            "name": "Stagione 1",
+            "overview": "La prima stagione della serie televisiva Runaways, composta da 10 episodi, è stata pubblicata negli Stati Uniti, da Hulu, dal 21 novembre 2017 al 9 gennaio 2018.\n\nIn Italia la stagione è pubblicata a partire dal 15 novembre 2018 su TIMvision.",
+            "poster_path": "/hMsaGkDyCM3Y3EWcdYK5Uu8qEok.jpg",
+            "season_number": 1,
+            "vote_average": 6.7
+          },
+          {
+            "air_date": "2018-12-21",
+            "episode_count": 13,
+            "id": 107889,
+            "name": "Stagione 2",
+            "overview": "",
+            "poster_path": "/r2e50wFzTsMgsSVLAyIB8uX1EGu.jpg",
+            "season_number": 2,
+            "vote_average": 6.9
+          },
+          {
+            "air_date": "2019-12-13",
+            "episode_count": 10,
+            "id": 128480,
+            "name": "Stagione 3",
+            "overview": "",
+            "poster_path": "/m83skvEvoFQoo1szIMpFQ6kbCe6.jpg",
+            "season_number": 3,
+            "vote_average": 7
+          }
+        ],
+        "spoken_languages": [
+          {
+            "english_name": "English",
+            "iso_639_1": "en",
+            "name": "English"
+          }
+        ],
+        "status": "Ended",
+        "tagline": "",
+        "type": "Scripted",
+        "vote_average": 7.437,
+        "vote_count": 839
+      },
+      "movieId": 67466,
+      "mediaType": "tv",
+      "id": 1
+    },
+    {
+      "userId": 4,
+      "movie": {
+        "adult": false,
+        "backdrop_path": "/pWsD91G2R1Da3AKM3ymr3UoIfRb.jpg",
+        "belongs_to_collection": {
+          "id": 1196130,
+          "name": "콘크리트 유니버스",
+          "poster_path": "/l4emA6jN9YQxhdpoZ4IThpMofc6.jpg",
+          "backdrop_path": "/9iJi448p9cvnpnLN7C0jBFjSseX.jpg"
+        },
+        "budget": 0,
+        "genres": [
+          {
+            "id": 878,
+            "name": "Fantascienza"
+          },
+          {
+            "id": 28,
+            "name": "Azione"
+          },
+          {
+            "id": 18,
+            "name": "Dramma"
+          }
+        ],
+        "homepage": "",
+        "id": 933131,
+        "imdb_id": "tt29722855",
+        "original_language": "ko",
+        "original_title": "황야",
+        "overview": "Dopo che un mortale terremoto ha trasformato Seoul in una terra desolata senza legge, un impavido cacciatore entra in azione per salvare un adolescente rapito da un dottore pazzo.",
+        "popularity": 2655.112,
+        "poster_path": "/uyM1tesNMM7fg6zmozn8MYD036G.jpg",
+        "production_companies": [
+          {
+            "id": 127541,
+            "logo_path": "/Aq35mXuZv7lhPm8a60YKRaB9Vek.png",
+            "name": "Climax Studios",
+            "origin_country": "KR"
+          },
+          {
+            "id": 159339,
+            "logo_path": null,
+            "name": "Nova Film",
+            "origin_country": "KR"
+          },
+          {
+            "id": 129217,
+            "logo_path": null,
+            "name": "Big Punch Pictures",
+            "origin_country": "KR"
+          },
+          {
+            "id": 7819,
+            "logo_path": "/ghFZAt4edln0M7BzDExyYMzUGX1.png",
+            "name": "Lotte Entertainment",
+            "origin_country": "KR"
+          }
+        ],
+        "production_countries": [
+          {
+            "iso_3166_1": "KR",
+            "name": "South Korea"
+          }
+        ],
+        "release_date": "2024-01-26",
+        "revenue": 0,
+        "runtime": 109,
+        "spoken_languages": [
+          {
+            "english_name": "Korean",
+            "iso_639_1": "ko",
+            "name": "한국어/조선말"
+          }
+        ],
+        "status": "Released",
+        "tagline": "",
+        "title": "Badland Hunters",
+        "video": false,
+        "vote_average": 6.775,
+        "vote_count": 306
+      },
+      "movieId": 933131,
+      "mediaType": "movie",
+      "id": 2
+    }
+  ]
 }
